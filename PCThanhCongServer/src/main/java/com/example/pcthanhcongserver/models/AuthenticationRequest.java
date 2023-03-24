@@ -1,2 +1,13 @@
-package com.example.pcthanhcongserver.models;public class AuthenticationRequest {
+package com.example.pcthanhcongserver.models;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+public class AuthenticationRequest {
+    private String username;
+    private String password;
 }
