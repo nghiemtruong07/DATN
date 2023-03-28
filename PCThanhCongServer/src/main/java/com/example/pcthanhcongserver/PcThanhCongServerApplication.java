@@ -4,6 +4,7 @@ import com.example.pcthanhcongserver.configs.MailInfoProperties;
 import com.example.pcthanhcongserver.configs.StorageProperties;
 import com.example.pcthanhcongserver.services.IStorageService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
@@ -24,10 +25,10 @@ public class PcThanhCongServerApplication {
         SpringApplication.run(PcThanhCongServerApplication.class, args);
     }
 
-//    @Bean
-//    CommandLineRunner init(IStorageService storageService){
-//        return (args -> {
-//            storageService.init();
-//        });
-//    }
+    @Autowired(required = false)
+    CommandLineRunner init(IStorageService storageService){
+        return (args -> {
+            storageService.init();
+        });
+    }
 }

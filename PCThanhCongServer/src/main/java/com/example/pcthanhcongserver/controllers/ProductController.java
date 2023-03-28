@@ -85,4 +85,23 @@ public class ProductController extends BaseController<Product> {
         return new ResponseEntity<>("Update Successful", HttpStatus.OK);
     }
 
+    @PutMapping(value = "/unlock/{id}")
+//    @PreAuthorize("@userAuthorizer.isAdmin(authentication)")
+    public ResponseEntity<?> unLockProduct(@PathVariable("id") Integer id){
+        service.unLockProductStatus(id);
+        return new ResponseEntity<>("Unlock Product Successfull",HttpStatus.OK);
+    }
+
+    @PutMapping(value = "/lock/{id}")
+//    @PreAuthorize("@userAuthorizer.isAdmin(authentication)")
+    public ResponseEntity<?> lockProduct(@PathVariable("id") Integer id){
+        service.lockProductStatus(id);
+        return new ResponseEntity<>("Lock Product Successfull",HttpStatus.OK);
+    }
+
+
+    @GetMapping(value = "/count")
+    public ResponseEntity<?> getProductCount(){
+        return new ResponseEntity<>(service.getProductCount() , HttpStatus.OK);
+    }
 }
