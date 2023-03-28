@@ -1,18 +1,21 @@
 package com.example.pcthanhcongserver.entity;
 
 import com.example.pcthanhcongserver.contants.StatusCodeProductEnum;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
 @NoArgsConstructor
-@Table
+@Table(name = "products")
 public class Product implements Serializable {
     @Column(name = "id")
     @Id
@@ -55,6 +58,137 @@ public class Product implements Serializable {
         this.amount = amount;
     }
 
+    @ManyToOne
+    @JsonIgnore
+    @JoinColumn(name = "categoryId",nullable = false)
+    private Category category;
+
+    @OneToMany(mappedBy = "product")
+    @Cascade(value = {org.hibernate.annotations.CascadeType.REMOVE, org.hibernate.annotations.CascadeType.SAVE_UPDATE})
+    private List<ProductImage> productImages;
+    @OneToMany(mappedBy = "product")
+    @Cascade(value = {org.hibernate.annotations.CascadeType.REMOVE, org.hibernate.annotations.CascadeType.SAVE_UPDATE})
+    private List<ProductRate> productRatesList;
+
+    @OneToMany(mappedBy = "product")
+    @JsonIgnore
+    @Cascade(value = {org.hibernate.annotations.CascadeType.REMOVE, org.hibernate.annotations.CascadeType.SAVE_UPDATE})
+    private List<CartItem> cartItemList;
+
+    @OneToMany(mappedBy = "product")
+    @JsonIgnore
+    @Cascade(value = {org.hibernate.annotations.CascadeType.REMOVE, org.hibernate.annotations.CascadeType.SAVE_UPDATE})
+    private List<OrderItem> orderItems;
+
+    @PrePersist
+    public void PrePersist(){
+        if(this.status == null)
+            this.status = StatusCodeProductEnum.OPENING;
+        if(this.promotionPrice == null)
+            this.promotionPrice = originalPrice;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getDescriptions() {
+        return descriptions;
+    }
+
+    public void setDescriptions(String descriptions) {
+        this.descriptions = descriptions;
+    }
+
+    public Integer getOriginalPrice() {
+        return originalPrice;
+    }
+
+    public void setOriginalPrice(Integer originalPrice) {
+        this.originalPrice = originalPrice;
+    }
+
+    public Integer getPromotionPrice() {
+        return promotionPrice;
+    }
+
+    public void setPromotionPrice(Integer promotionPrice) {
+        this.promotionPrice = promotionPrice;
+    }
+
+    public Date getCreatedDate() {
+        return createDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createDate = createdDate;
+    }
+
+    public Integer getAmount() {
+        return amount;
+    }
+
+    public void setAmount(Integer amount) {
+        this.amount = amount;
+    }
+
+    public StatusCodeProductEnum getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusCodeProductEnum status) {
+        this.status = status;
+    }
+
+    public Category getCategory(){return  category;}
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public List<ProductImage> getProductImages() {
+        return productImages;
+    }
+
+    public void setProductImages(List<ProductImage> productImages) {
+        this.productImages = productImages;
+    }
+
+    public List<ProductRate> getProductRatesList() {
+        return productRatesList;
+    }
+
+    public void setProductRatesList(List<ProductRate> productRatesList) {
+        this.productRatesList = productRatesList;
+    }
+
+    public List<CartItem> getCartItemList() {
+        return cartItemList;
+    }
+
+    public void setCartItemList(List<CartItem> cartItemList) {
+        this.cartItemList = cartItemList;
+    }
+
+    public List<OrderItem> getOrderItems() {
+        return orderItems;
+    }
+
+    public void setOrderItems(List<OrderItem> orderItems) {
+        this.orderItems = orderItems;
+    }
 
 
 }

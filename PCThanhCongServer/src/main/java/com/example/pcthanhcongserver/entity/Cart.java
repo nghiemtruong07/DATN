@@ -5,6 +5,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @Entity
@@ -22,6 +23,14 @@ public class Cart implements Serializable {
 
     @Column(name = "amount")
     private Integer amount;
+
+    @OneToMany(mappedBy = "cart")
+    private List<CartItem> cartItemList;
+
+    @PrePersist
+    public void PrePersist(){
+        this.amount = this.cartItemList.size();
+    }
 
 
 }

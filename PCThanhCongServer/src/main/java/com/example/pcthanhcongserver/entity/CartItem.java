@@ -1,6 +1,7 @@
 package com.example.pcthanhcongserver.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -24,4 +25,15 @@ public class CartItem implements Serializable {
     @JsonIgnore
     @JoinColumn(name = "cart_Id")
     private Cart cart;
+
+    @ManyToOne
+    @JsonManagedReference
+    @JoinColumn(name = "product_Id")
+    private Product product;
+
+    public CartItem(Integer amount, Cart cart, Product product){
+        this.amount = amount;
+        this.cart = cart;
+        this.product = product;
+    }
 }
