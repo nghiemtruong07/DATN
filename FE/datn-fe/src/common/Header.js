@@ -1,10 +1,12 @@
 import React from "react";
 import "../static/css/style.css";
-import logo from "../static/images/logo-sneaker1_1.jpg";
+import logo from "../static/images/LogoHome.jpg";
 import { NavLink, useHistory } from "react-router-dom";
 import user_image from "../static/images/default.png";
 import Dropdown from "../admin/dropdown/Dropdown";
 import { toast } from "react-toastify";
+import { FaShoppingCart } from "react-icons/fa";
+// import {FaShoppingCart } from "react-icons/fa";
 
 const user_menu = [
   {
@@ -56,12 +58,7 @@ const Header = (props) => {
   );
 
   const renderUserMenu = (item, index) => (
-    <NavLink
-      to={item.url}
-      key={index}
-      exact
-      onClick={item.url === "/" ? signOutHandler : ""}
-    >
+    <NavLink to={item.url} key={index} exact onClick={item.url === "/" ? signOutHandler : ""}>
       <div className="notification-item">
         <i className={item.icon}></i>
         <span>{item.content}</span>
@@ -87,90 +84,47 @@ const Header = (props) => {
         </div>
         <div className="collapse navbar-collapse col">
           <ul className="navbar-nav mini-ul">
-            <li
-              className={
-                props.header === 1
-                  ? "nav-item mr-2  mini-item active"
-                  : "nav-item mr-2  mini-item"
-              }
-            >
+            <li className={props.header === 1 ? "nav-item mr-2  mini-item active" : "nav-item mr-2  mini-item"}>
               <NavLink className="nav-link" to="/" exact>
                 Trang chủ
               </NavLink>
             </li>
-            <li
-              className={
-                props.header === 2
-                  ? "nav-item mr-2  mini-item active"
-                  : "nav-item mr-2  mini-item"
-              }
-            >
+            <li className={props.header === 2 ? "nav-item mr-2  mini-item active" : "nav-item mr-2  mini-item"}>
               <NavLink className="nav-link" to="/store" exact>
                 Sản phẩm
               </NavLink>
             </li>
-            <li
-              className={
-                props.header === 3
-                  ? "nav-item mr-2  mini-item active"
-                  : "nav-item mr-2  mini-item"
-              }
-            >
+            <li className={props.header === 3 ? "nav-item mr-2  mini-item active" : "nav-item mr-2  mini-item"}>
               <NavLink className="nav-link" to="/cart" exact>
                 Giỏ hàng
+                {/* <FaShoppingCart className="header__cart-icon "></FaShoppingCart> */}
+                {/* <div className=" header__cart-notice ">3</div> */}
               </NavLink>
             </li>
             {props.user && (
-              <li
-                className={
-                  props.header === 5
-                    ? "nav-item mr-2  mini-item active"
-                    : "nav-item mr-2  mini-item"
-                }
-              >
+              <li className={props.header === 5 ? "nav-item mr-2  mini-item active" : "nav-item mr-2  mini-item"}>
                 <NavLink className="nav-link" to="/order" exact>
                   Đơn hàng
                 </NavLink>
               </li>
             )}
-            <li
-              className={
-                props.header === 4
-                  ? "nav-item mr-2  mini-item active"
-                  : "nav-item mr-2  mini-item"
-              }
-            >
+            <li className={props.header === 4 ? "nav-item mr-2  mini-item active" : "nav-item mr-2  mini-item"}>
               <NavLink className="nav-link" to="/blog" exact>
                 Liên hệ
               </NavLink>
             </li>
             {props.user && (
-              <li
-              className={
-                props.header === 6
-                  ? "nav-item mr-2  mini-item active"
-                  : "nav-item mr-2  mini-item"
-              }
-            >
-              <NavLink className="nav-link" to="/chat" exact>
-                Hỏi đáp
-              </NavLink>
-            </li>
+              <li className={props.header === 6 ? "nav-item mr-2  mini-item active" : "nav-item mr-2  mini-item"}>
+                <NavLink className="nav-link" to="/chat" exact>
+                  Hỏi đáp
+                </NavLink>
+              </li>
             )}
           </ul>
-          <form
-            className="form-inline my-2 my-lg-0 mr-3"
-            onSubmit={(e) => submitHandler(e)}
-          >
+          <form className="form-inline my-2 my-lg-0 mr-3" onSubmit={(e) => submitHandler(e)}>
             <div>
-            <input
-              className="form-control mr-sm-2"
-              type="search"
-              aria-label="Search"
-              name="keyword"
-            />
-           
-            </div>                       
+              <input className="form-control mr-sm-2" type="search" aria-label="Search" name="keyword" />
+            </div>
           </form>
           {/* {props.user && (
             <Dropdown
@@ -186,15 +140,11 @@ const Header = (props) => {
               renderItems={(item, index) => renderUserMenu(item, index)}
             />
           )} */}
-          {props.user ?  <Dropdown
-              customToggle={() => renderUserToggle(curr_user)}
-              contentData={user_menu}
-              renderItems={(item, index) => renderUserMenu(item, index)}
-            /> :  <Dropdown
-              customToggle={() => renderUserToggle(curr_user)}
-              contentData={not_menu}
-              renderItems={(item, index) => renderUserMenu(item, index)}
-            />}
+          {props.user ? (
+            <Dropdown customToggle={() => renderUserToggle(curr_user)} contentData={user_menu} renderItems={(item, index) => renderUserMenu(item, index)} />
+          ) : (
+            <Dropdown customToggle={() => renderUserToggle(curr_user)} contentData={not_menu} renderItems={(item, index) => renderUserMenu(item, index)} />
+          )}
         </div>
       </nav>
     </div>
