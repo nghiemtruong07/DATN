@@ -1,6 +1,6 @@
 import React from "react";
 import "./sidebar.css";
-import logo from "../../assets/images/logo-sneaker.png";
+import logo from "../../assets/images/logo.png";
 import sidebar_items from "../../assets/JsonData/sidebar_routes.json";
 import { Link } from "react-router-dom";
 
