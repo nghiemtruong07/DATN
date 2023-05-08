@@ -64,7 +64,7 @@ const UserLayOut = () => {
   };
 
   const cancelBuyHandler = (id) => {
-    const res = buy.filter((item) => item != id);
+    const res = buy.filter((item) => item !== id);
     setBuy(res);
   };
 
@@ -90,13 +90,7 @@ const UserLayOut = () => {
   const addHandler = (data) => {
     const res = cartItem.find((item) => item.id === data.id);
     if (res) {
-      setCartItem(
-        cartItem.map((item) =>
-          item.id === data.id
-            ? { ...res, quantity: res.quantity + data.quantity }
-            : item
-        )
-      );
+      setCartItem(cartItem.map((item) => (item.id === data.id ? { ...res, quantity: res.quantity + data.quantity } : item)));
     } else {
       setCartItem([...cartItem, data]);
     }
@@ -120,29 +114,16 @@ const UserLayOut = () => {
 
   return (
     <div className="col-10 offset-1">
-      <Header
-        header={header}
-        searchHandler={searchHandler}
-        user={user}
-        userHandler={userHandler}
-        refresh={refresh}
-      ></Header>
+      <Header header={header} searchHandler={searchHandler} user={user} userHandler={userHandler} refresh={refresh}></Header>
       <Switch>
         <Route path="/" exact>
           <Home changeHeaderHandler={changeHeaderHandler} user={user}></Home>
         </Route>
         <Route path="/store" exact>
-          <Product
-            changeHeaderHandler={changeHeaderHandler}
-            user={user}
-          ></Product>
+          <Product changeHeaderHandler={changeHeaderHandler} user={user}></Product>
         </Route>
         <Route path={`/product-detail/:id`} exact>
-          <ProductDetail
-            changeHeaderHandler={changeHeaderHandler}
-            user={user}
-            addHandler={addHandler}
-          ></ProductDetail>
+          <ProductDetail changeHeaderHandler={changeHeaderHandler} user={user} addHandler={addHandler}></ProductDetail>
         </Route>
         <Route path="/cart" exact>
           <Cart
@@ -173,10 +154,7 @@ const UserLayOut = () => {
           <Order changeHeaderHandler={changeHeaderHandler} user={user}></Order>
         </Route>
         <Route path="/order/detail/:id" exact>
-          <OrderDetail
-            changeHeaderHandler={changeHeaderHandler}
-            user={user}
-          ></OrderDetail>
+          <OrderDetail changeHeaderHandler={changeHeaderHandler} user={user}></OrderDetail>
         </Route>
         <Route path="/out-of-stock" exact>
           <OutStock

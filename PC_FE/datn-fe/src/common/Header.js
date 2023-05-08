@@ -4,7 +4,7 @@ import { NavLink, useHistory } from "react-router-dom";
 import user_image from "../static/images/default.png";
 import Dropdown from "../admin/dropdown/Dropdown";
 import { toast } from "react-toastify";
-
+import { GoSearch } from "react-icons/go";
 const user_menu = [
   {
     icon: "bx bx-user",
@@ -55,12 +55,7 @@ const Header = (props) => {
   );
 
   const renderUserMenu = (item, index) => (
-    <NavLink
-      to={item.url}
-      key={index}
-      exact
-      onClick={item.url === "/" ? signOutHandler : ""}
-    >
+    <NavLink to={item.url} key={index} exact onClick={item.url === "/" ? signOutHandler : ""}>
       <div className="notification-item">
         <i className={item.icon}></i>
         <span>{item.content}</span>
@@ -81,104 +76,50 @@ const Header = (props) => {
     <div className="mini-card">
       {/* Navigation */}
       <nav className="navbar navbar-expand-md col-12">
-        
         <div className="collapse navbar-collapse col">
           <ul className="navbar-nav mini-ul">
-            <li
-              className={
-                props.header === 1
-                  ? "nav-item mr-2  mini-item active"
-                  : "nav-item mr-2  mini-item"
-              }
-            >
+            <li className={props.header === 1 ? "nav-item mr-2  mini-item active" : "nav-item mr-2  mini-item"}>
               <NavLink className="nav-link" to="/" exact>
                 Trang chủ
               </NavLink>
             </li>
-            <li
-              className={
-                props.header === 2
-                  ? "nav-item mr-2  mini-item active"
-                  : "nav-item mr-2  mini-item"
-              }
-            >
+            <li className={props.header === 2 ? "nav-item mr-2  mini-item active" : "nav-item mr-2  mini-item"}>
               <NavLink className="nav-link" to="/store" exact>
                 Sản phẩm
               </NavLink>
             </li>
-            <li
-              className={
-                props.header === 3
-                  ? "nav-item mr-2  mini-item active"
-                  : "nav-item mr-2  mini-item"
-              }
-            >
+            <li className={props.header === 3 ? "nav-item mr-2  mini-item active" : "nav-item mr-2  mini-item"}>
               <NavLink className="nav-link" to="/cart" exact>
                 Giỏ hàng
               </NavLink>
             </li>
             {props.user && (
-              <li
-                className={
-                  props.header === 5
-                    ? "nav-item mr-2  mini-item active"
-                    : "nav-item mr-2  mini-item"
-                }
-              >
+              <li className={props.header === 5 ? "nav-item mr-2  mini-item active" : "nav-item mr-2  mini-item"}>
                 <NavLink className="nav-link" to="/order" exact>
                   Đơn hàng
                 </NavLink>
               </li>
             )}
-            <li
-              className={
-                props.header === 4
-                  ? "nav-item mr-2  mini-item active"
-                  : "nav-item mr-2  mini-item"
-              }
-            >
+            <li className={props.header === 4 ? "nav-item mr-2  mini-item active" : "nav-item mr-2  mini-item"}>
               <NavLink className="nav-link" to="/blog" exact>
                 Chính sách
               </NavLink>
             </li>
-            {props.user && (
-              <li
-              className={
-                props.header === 6
-                  ? "nav-item mr-2  mini-item active"
-                  : "nav-item mr-2  mini-item"
-              }
-            >            
-            </li>
-            )}
+            {props.user && <li className={props.header === 6 ? "nav-item mr-2  mini-item active" : "nav-item mr-2  mini-item"}></li>}
           </ul>
-          <form
-            className="form-inline my-2 my-lg-0 mr-3"
-            onSubmit={(e) => submitHandler(e)}
-          >
-            <input
-              className="form-control mr-sm-2"
-              type="search"
-              aria-label="Search"
-              name="keyword"
-            />
-            <button>           
+          <form className="form-inline my-2 my-lg-0 mr-3" onSubmit={(e) => submitHandler(e)}>
+            <input className="form-control mr-sm-2  header__search-input" type="search" aria-label="Search" name="keyword" placeholder=" Tìm kiếm sản phẩm " />
+            <button className=" header__search-btn">
+              {" "}
+              <GoSearch className="header__search-btn-icon" />
             </button>
           </form>
           {props.user && (
-            <Dropdown
-              customToggle={() => renderUserToggle(curr_user)}
-              contentData={user_menu}
-              renderItems={(item, index) => renderUserMenu(item, index)}
-            />
+            <Dropdown customToggle={() => renderUserToggle(curr_user)} contentData={user_menu} renderItems={(item, index) => renderUserMenu(item, index)} />
           )}
           {!props.user && (
-            <Dropdown
-              customToggle={() => renderUserToggle(curr_user)}
-              contentData={not_menu}
-              renderItems={(item, index) => renderUserMenu(item, index)}
-            />
-          )}              
+            <Dropdown customToggle={() => renderUserToggle(curr_user)} contentData={not_menu} renderItems={(item, index) => renderUserMenu(item, index)} />
+          )}
         </div>
       </nav>
     </div>
