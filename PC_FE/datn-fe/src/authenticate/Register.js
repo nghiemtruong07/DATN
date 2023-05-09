@@ -34,22 +34,14 @@ const Register = () => {
         <div className="container py-5 h-100">
           <div className="row justify-content-center align-items-center h-100">
             <div className="col-12 col-lg-9 col-xl-7">
-              <div
-                className="card bg-dark text-white"
-                style={{ borderRadius: "15px" }}
-              >
+              <div className="card bg-dark text-white" style={{ borderRadius: "15px" }}>
                 <div className="card-body p-4 p-md-5">
-                  <h3 className="mb-4 pb-2 pb-md-0 mb-md-5 text-center">
-                    Đăng kí
-                  </h3>
-                  <form
-                    className="needs-validation"
-                    onSubmit={handleSubmit(onSubmitHandler)}
-                  >
+                  <h3 className="mb-4 pb-2 pb-md-0 mb-md-5 text-center">Đăng kí</h3>
+                  <form className="needs-validation" onSubmit={handleSubmit(onSubmitHandler)}>
                     <div className="row">
                       <div className="col-md-6 mb-4">
                         <div className="form-outline">
-                        <label className="form-label" htmlFor="firstName">
+                          <label className="form-label" htmlFor="firstName">
                             Tài khoản
                           </label>
                           <input
@@ -60,7 +52,7 @@ const Register = () => {
                               required: true,
                               pattern: /^\s*\S+.*/,
                             })}
-                          />                        
+                          />
                           {errors.username && (
                             <div className="alert alert-danger" role="alert">
                               Tài khoản không hợp lệ!
@@ -70,7 +62,7 @@ const Register = () => {
                       </div>
                       <div className="col-md-6 mb-4">
                         <div className="form-outline">
-                        <label className="form-label" htmlFor="lastName">
+                          <label className="form-label" htmlFor="lastName">
                             Mật khẩu
                           </label>
                           <input
@@ -81,7 +73,7 @@ const Register = () => {
                               required: true,
                               pattern: /^\s*\S+.*/,
                             })}
-                          />                          
+                          />
                           {errors.password && (
                             <div className="alert alert-danger" role="alert">
                               Mật khẩu không hợp lệ!
@@ -93,7 +85,7 @@ const Register = () => {
                     <div className="row">
                       <div className="col-md-6 mb-4 d-flex align-items-center">
                         <div className="form-outline datepicker w-100">
-                        <label htmlFor="birthdayDate" className="form-label">
+                          <label htmlFor="birthdayDate" className="form-label">
                             Họ và tên
                           </label>
                           <input
@@ -104,7 +96,7 @@ const Register = () => {
                               required: true,
                               pattern: /^\s*\S+.*/,
                             })}
-                          />                          
+                          />
                           {errors.fullName && (
                             <div className="alert alert-danger" role="alert">
                               Họ và tên không hợp lệ!
@@ -113,7 +105,7 @@ const Register = () => {
                         </div>
                       </div>
                       <div className="col-md-6 mb-4">
-                        <h6 className="mb-2 pb-1">Giới tính: </h6>
+                        <h6 className="mb-2 pb-1">Giới tính </h6>
                         <div className="form-check form-check-inline">
                           <input
                             className="form-check-input"
@@ -126,10 +118,7 @@ const Register = () => {
                               required: true,
                             })}
                           />
-                          <label
-                            className="form-check-label"
-                            htmlFor="femaleGender"
-                          >
+                          <label className="form-check-label" htmlFor="femaleGender">
                             Nữ
                           </label>
                         </div>
@@ -144,10 +133,7 @@ const Register = () => {
                               required: true,
                             })}
                           />
-                          <label
-                            className="form-check-label"
-                            htmlFor="maleGender"
-                          >
+                          <label className="form-check-label" htmlFor="maleGender">
                             Nam
                           </label>
                         </div>
@@ -156,7 +142,7 @@ const Register = () => {
                     <div className="row">
                       <div className="col-md-6 mb-4 pb-2">
                         <div className="form-outline">
-                        <label className="form-label" htmlFor="emailAddress">
+                          <label className="form-label" htmlFor="emailAddress">
                             Email
                           </label>
                           <input
@@ -165,10 +151,9 @@ const Register = () => {
                             className="form-control form-control-lg"
                             {...register("email", {
                               required: true,
-                              pattern:
-                                /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                              pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                             })}
-                          />                         
+                          />
                           {errors.email && (
                             <div className="alert alert-danger" role="alert">
                               Email không hợp lệ!
@@ -178,7 +163,7 @@ const Register = () => {
                       </div>
                       <div className="col-md-6 mb-4 pb-2">
                         <div className="form-outline">
-                        <label className="form-label" htmlFor="phoneNumber">
+                          <label className="form-label" htmlFor="phoneNumber">
                             Số điện thoại
                           </label>
                           <input
@@ -187,9 +172,8 @@ const Register = () => {
                             className="form-control form-control-lg"
                             {...register("phone", {
                               required: true,
-                             
                             })}
-                          />                          
+                          />
                           {errors.phone && (
                             <div className="alert alert-danger" role="alert">
                               Số điện thoại không hợp lệ!
@@ -200,18 +184,10 @@ const Register = () => {
                     </div>
 
                     <div className="row">
-                      <div className="col-12">
-                      <label className="form-label select-label">
-                          Địa chỉ
-                        </label>
-                        <textarea
-                          name=""
-                          id=""
-                          cols="50"
-                          rows="3"
-                          {...register("address", { required: false })}
-                        ></textarea>                      
-                      </div>
+                      {/* <div className="col-12"> */}
+                      <label className="form-label select-label">Địa chỉ</label>
+                      <textarea className="textare" name="" id="" cols="50" rows="3" {...register("address", { required: false })}></textarea>
+                      {/* </div> */}
                     </div>
                     <div className="mt-4 pt-2 mb-3">
                       <button className="btn btn-primary btn-lg" type="submit">
@@ -219,13 +195,9 @@ const Register = () => {
                       </button>
                     </div>
                     <div>
-                      <p className="mb-0">
+                      <p className="mb-0 mb">
                         Đã có tài khoản?{" "}
-                        <NavLink
-                          to="/sign-in"
-                          exact
-                          className="text-white-50 fw-bold"
-                        >
+                        <NavLink to="/sign-in" exact className="text-white-50 fw-bold">
                           Đăng nhập ngay
                         </NavLink>
                       </p>
