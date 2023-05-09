@@ -60,7 +60,7 @@ const ProductDetail = (props) => {
       .catch((error) => console.log(error));
     setStatus(stock > count);
 
-    if(props.user){
+    if (props.user) {
       getCartItemByAccountId(props.user.id).then((resp) => {
         setCart(resp.data.map((item) => ({ ...item, checked: false })));
       });
@@ -89,7 +89,7 @@ const ProductDetail = (props) => {
           const data = {
             accountId: props.user.id,
             attributeId: attributeId,
-            quantity: flagId.includes(attributeId) ? (count + obj.quantity) : count,
+            quantity: flagId.includes(attributeId) ? count + obj.quantity : count,
             lastPrice: lastPrice,
           };
           console.log(data);
@@ -128,19 +128,18 @@ const ProductDetail = (props) => {
 
   const updateCount = (value) => {
     console.log(value);
-    if(value >= 1){
+    if (value >= 1) {
       isEnoughCartItem(flag, value)
-      .then(() => {
-        setCount(value);
-      })
-      .catch((error) => {
-        toast.warning(error.response.data.Errors);
-        setCount(1);
-      });
-    }else{
+        .then(() => {
+          setCount(value);
+        })
+        .catch((error) => {
+          toast.warning(error.response.data.Errors);
+          setCount(1);
+        });
+    } else {
       toast.warning("Số lượng không hợp lệ");
     }
-   
   };
 
   const addCount = (value) => {
@@ -161,32 +160,19 @@ const ProductDetail = (props) => {
             <div className="card mb-3 border-0">
               <div className="row g-0">
                 <div className="col-md-4">
-                  <img
-                    src={require(`../static/images/${item.main}`)}
-                    className="img-fluid rounded-start"
-                    style={{ width: "600px", height: "400px" }}
-                    alt=""
-                  />
+                  <img src={require(`../static/images/${item.main}`)} className="img-fluid rounded-start" style={{ width: "600px", height: "400px" }} alt="" />
                 </div>
                 <div className="col-md-8">
                   <div className="card-body">
-                    <h1 className="card-title text-danger fw-bolder">
-                      {item.name}
-                    </h1>
+                    <h1 className="card-title text-danger fw-bolder">{item.name}</h1>
                     <hr />
-                    <p className="card-text fw-bold fs-5">Mã SP: {item.code}</p>
+                    {/* <p className="card-text fw-bold fs-5">Mã SP: {item.code}</p> */}
                     <hr />
                     <h4 className="card-text fw-bolder text-danger fs-5">
-                      Giá bán:{" "}
-                      {price &&
-                        (
-                          (price * (100 - item.discount)) /
-                          100
-                        ).toLocaleString() + " đ"}
+                      Giá bán: {price && ((price * (100 - item.discount)) / 100).toLocaleString() + " đ"}
                     </h4>
                     <h6 className="card-text fw-bolder fs-5">
-                      Giá gốc:{" "}
-                      <del>{price && price.toLocaleString() + " đ"}</del>
+                      Giá gốc: <del>{price && price.toLocaleString() + " đ"}</del>
                     </h6>
                     <h6 className="card-text fw-bolder fs-5" hidden>
                       Sản phẩm còn: {stock && stock + " đôi"}
@@ -195,10 +181,7 @@ const ProductDetail = (props) => {
                     <div className="div" hidden>
                       <label className="mr-5">Chọn size</label>
                       {attributes.map((i, index) => (
-                        <div
-                          className="form-check form-check-inline"
-                          key={index}
-                        >
+                        <div className="form-check form-check-inline" key={index}>
                           <input
                             className="form-check-input"
                             type="radio"
@@ -214,14 +197,11 @@ const ProductDetail = (props) => {
                       ))}
                     </div>
                     <div className="mt-5">
-                      <button
-                        className="btn btn-outline-dark"
-                        onClick={() => addCount(count + 1)}
-                      >
+                      <button className="btn btn-outline-dark" onClick={() => addCount(count + 1)}>
                         +
                       </button>
                       <input
-                      className="text-center"
+                        className="text-center"
                         type="number"
                         name="quantity"
                         style={{ width: "60px" }}
@@ -229,24 +209,12 @@ const ProductDetail = (props) => {
                         onChange={(e) => updateCount(e.target.value)}
                         min={1}
                       />
-                      <button
-                        className="btn btn-outline-dark"
-                        onClick={() => addCount(count - 1)}
-                        disabled={count == 1}
-                      >
+                      <button className="btn btn-outline-dark" onClick={() => addCount(count - 1)} disabled={count == 1}>
                         -
                       </button>
                     </div>
                     <hr />
-                    <button
-                      onClick={() =>
-                        onAddCartHandler(
-                          flag,
-                          (price * (100 - item.discount)) / 100
-                        )
-                      }
-                      className="btn btn-primary text-white"
-                    >
+                    <button onClick={() => onAddCartHandler(flag, (price * (100 - item.discount)) / 100)} className="btn btn-primary text-white">
                       Thêm vào giỏ
                     </button>
                     <NavLink to="/cart" className="btn btn-primary ml-2">
@@ -266,7 +234,7 @@ const ProductDetail = (props) => {
                     alt="..."
                     className="img-thumbnail mr-3"
                     style={{ width: "200px", height: "200px" }}
-                  />               
+                  />
                 </div>
               </div>
             </div>
@@ -301,36 +269,20 @@ const ProductDetail = (props) => {
                   relate.map((item, index) => (
                     <div className="col-md-4 mb-3" key={index}>
                       <div className="card h-100 mini-pro">
-                        <div className="d-flex justify-content-between position-absolute w-100">
-                         
-                        </div>
+                        <div className="d-flex justify-content-between position-absolute w-100"></div>
                         <NavLink to={`/product-detail/${item.id}`}>
-                          <img
-                            src={require(`../static/images/${item.image}`)}
-                            style={{ width: 150, height: 150 }}
-                            alt="Product"
-                            className="mini-card"
-                          />
+                          <img src={require(`../static/images/${item.image}`)} style={{ width: 150, height: 150 }} alt="Product" className="mini-card" />
                         </NavLink>
                         <div className="card-body px-2 pb-2 pt-1">
                           <div className="d-flex justify-content-between">
                             <div>
-                              <p className="h4 text-primary mini-card">
-                                {(
-                                  (item.price * (100 - item.discount)) /
-                                  100
-                                ).toLocaleString()}{" "}
-                                đ
-                              </p>
+                              <p className="h4 text-primary mini-card">{((item.price * (100 - item.discount)) / 100).toLocaleString()} đ</p>
                             </div>
                           </div>
-                        
+
                           <p className="mb-0">
                             <strong>
-                              <NavLink
-                                to={`/product-detail/${item.id}`}
-                                className="text-secondary "
-                              >
+                              <NavLink to={`/product-detail/${item.id}`} className="text-secondary ">
                                 {item.name}
                               </NavLink>
                             </strong>
@@ -344,12 +296,11 @@ const ProductDetail = (props) => {
                           </p>
                           <div className="d-flex mb-3 justify-content-between">
                             <div>
-                              
                               <p className="mb-0 small">
                                 <b>Giá gốc: {item.price.toLocaleString()} đ</b>
-                              </p>                           
+                              </p>
                             </div>
-                          </div>                     
+                          </div>
                         </div>
                       </div>
                     </div>

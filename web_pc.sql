@@ -22,7 +22,9 @@ SET time_zone = "+00:00";
 --
 
 -- --------------------------------------------------------
-
+DROP DATABASE IF EXISTS web_pc;
+CREATE DATABASE web_pc;
+USE web_pc;
 --
 -- Cấu trúc bảng cho bảng `accounts`
 --
@@ -388,7 +390,16 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `code`, `create_date`, `description`, `modify_date`, `name`, `view`, `brand_id`, `sale_id`, `is_active`) VALUES
-(36, 'LT01', '2023-04-27', 'lap top 01', '2023-04-28', 'Laptop 01', 1, 1, 1, 1),
+(36, 'LT01', '2023-04-27', 'CPU: AMD Ryzen 7-4800H (8 nhân, 16 luồng, 2.9GHz up to 4.2GHz, 12MB Cache)
+RAM: 8GB DDR4-3200 (2x SO-DIMM slots)
+Ổ cứng: 512GB PCIe® 3.0 NVMe™ M.2 SSD
+VGA: NVIDIA GeForce RTX 3050 Ti 4GB GDDR6
+Màn hình: 15.6-inch FHD (1920 x 1080) 16:9,144Hz,IPS-level,250nits,1:1000, 45% NTSC, 62.5% SRGB, anti-glare display
+Pin: 4-cell, 56WHrs
+Cân nặng: 2.10 Kg
+Màu sắc: Xám
+Tính năng: Bàn phím LED RGB
+OS: Windows 11 Home', '2023-04-28', 'Laptop Asus ROG Strix G153 G513IE-HN246W (Ryzen 7 4800H | 8GB | 512GB | RTX 3050Ti 4GB | 15.6-inch FHD 144Hz | Win 11 | Xám)', 1, 1, 1, 1),
 (37, 'LT02', '2023-04-27', 'Laptop 02', '2023-04-28', 'Laptop 02', 1, 1, 2, 1),
 (38, 'LT03', '2023-04-27', 'lap top 03', '2023-04-28', 'Laptop 03', 1, 1, 2, 1),
 (39, 'LT04', '2023-04-27', 'Lap top 04', '2023-04-27', 'Laptop 04', 1, 1, 1, 1),
