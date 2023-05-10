@@ -44,12 +44,12 @@ CREATE TABLE `accounts` (
 --
 
 INSERT INTO `accounts` (`id`, `create_date`, `is_active`, `modify_date`, `password`, `username`, `role_id`) VALUES
-(1, '2022-06-01', 1, '2022-08-27', '$2a$10$8u4b.UhMGLoKB4UUGED3ZOPBQCF2jh9VSRqCeGqoXNTMshs3zACli', 'admin', 1),
-(2, '2022-06-01', 1, '2023-04-28', '$2a$10$wGrHJdgHvTaqlNxxreKtNO4rttRSUgRFZ4LfYeBCRfPFUCvZ5pYCa', 'minhnc', 3),
-(3, '2022-06-01', 1, '2022-06-01', '$2a$10$DnZ83rlh.z.Wvua5MOYCuu0oXvosnyuRIdmPQxwMPVqn.0Rbw.MJC', 'daicv', 2),
-(4, '2022-06-01', 1, '2022-06-01', '$2a$10$wt9PMeccQR5I.qyX2.lseOtu5BvRd9019bHnD.m02N1gQ/wkL9koa', 'manhnq', 3),
-(5, '2022-06-01', 1, '2022-06-01', '$2a$10$wt9PMeccQR5I.qyX2.lseOtu5BvRd9019bHnD.m02N1gQ/wkL9koa', 'kh01', 3),
-(6, '2022-06-01', 1, '2022-06-01', '$2a$10$wt9PMeccQR5I.qyX2.lseOtu5BvRd9019bHnD.m02N1gQ/wkL9koa', 'kh02', 3);
+(1, '2023-05-01', 1, '2023-05-27', '$2a$10$8u4b.UhMGLoKB4UUGED3ZOPBQCF2jh9VSRqCeGqoXNTMshs3zACli', 'admin', 1),
+(2, '2023-05-01', 1, '2023-05-28', '$2a$10$wGrHJdgHvTaqlNxxreKtNO4rttRSUgRFZ4LfYeBCRfPFUCvZ5pYCa', 'nvt', 3),
+(3, '2023-05-01', 1, '2023-05-01', '$2a$10$DnZ83rlh.z.Wvua5MOYCuu0oXvosnyuRIdmPQxwMPVqn.0Rbw.MJC', 'nvt1', 2),
+(4, '2023-05-01', 1, '2023-05-01', '$2a$10$wt9PMeccQR5I.qyX2.lseOtu5BvRd9019bHnD.m02N1gQ/wkL9koa', 'manhnq', 3),
+(5, '2023-05-01', 1, '2023-05-01', '$2a$10$wt9PMeccQR5I.qyX2.lseOtu5BvRd9019bHnD.m02N1gQ/wkL9koa', 'kh01', 3),
+(6, '2023-05-01', 1, '2023-05-01', '$2a$10$wt9PMeccQR5I.qyX2.lseOtu5BvRd9019bHnD.m02N1gQ/wkL9koa', 'kh02', 3);
 
 -- --------------------------------------------------------
 
@@ -74,7 +74,7 @@ CREATE TABLE `account_detail` (
 
 INSERT INTO `account_detail` (`id`, `birthdate`, `email`, `fullname`, `gender`, `phone`, `account_id`, `address`) VALUES
 (1, '2022-08-27 00:00:00', 'admin@gmail.com', 'Admin', 'Nam', '0366202468', 1, 'Hà Nội 36 phố phường'),
-(2, '2023-04-28 00:00:00', 'minhminhnc@gmail.com', 'Nguyễn Công MinhaAA', 'Nữ', '0697856354', 2, 'xxx, Phường Ngọc Thụy, Quận Long Biên, Thành phố Hà Nội'),
+(2, '2023-04-28 00:00:00', 'minhminhnc@gmail.com', 'Nghiêm Văn Trường', 'Nữ', '0978641896', 2, 'xxx, Phường Ngọc Thụy, Quận Long Biên, Thành phố Hà Nội'),
 (3, '2001-04-02 00:00:00', 'chudai010421@gmail.com', 'Chu Văn Đài', 'Nam', '0587719303', 3, ''),
 (4, '1996-08-07 00:00:00', 'hunghv070896@gmail.com', 'Hoàng Văn Hưng', 'Nam', '0364690214', 4, '');
 
@@ -109,7 +109,7 @@ INSERT INTO `attribute` (`id`, `create_date`, `modify_date`, `price`, `size`, `s
 (119, '2023-04-28', '2023-04-28', 1200000, 39, 10, 41, 0, 'Manhinh 07'),
 (120, '2023-04-28', '2023-04-28', 1200000, 39, 1, 42, 0, 'Manhinh 03'),
 (121, '2023-04-28', '2023-04-28', 4000000, 39, 10, 43, 0, 'Manhinh 02'),
-(122, '2023-04-28', '2023-04-28', 3000000, 39, 10, 44, 0, 'Manhinh 04'),
+(122, '2023-04-28', '2023-04-28', 300000, 39, 10, 44, 0, 'Manhinh 04'),
 (123, '2023-04-28', '2023-04-28', 22000, 39, 10, 45, 0, 'Manhinh 07'),
 (124, '2023-05-05', '2023-05-05', 250000, 39, 10, 46, 0, 'Laptop 09'),
 (125, '2023-05-05', '2023-05-05', 300000, 39, 15, 47, 0, 'Laptop 10'),
@@ -136,11 +136,11 @@ CREATE TABLE `brands` (
 --
 
 INSERT INTO `brands` (`id`, `create_date`, `description`, `image`, `is_active`, `modify_date`, `name`) VALUES
-(1, '2023-04-25', 'Laptop', 'laptop.jpg', b'1', '2023-04-25', 'Laptop'),
-(2, '2023-04-25', 'Phụ kiện', 'phukien.jpg', b'1', '2023-04-25', 'Phụ Kiện'),
-(3, '2023-06-01', 'Màn hình', 'manhinh.jpg', b'1', '2023-07-21', 'Màn hình'),
-(4, '2023-06-01', 'P_C', 'pc.jpg', b'1', '2023-06-01', 'P_C'),
-(9, '2023-05-05', 'Lap top chất lượng', NULL, b'1', '2023-05-05', 'LaptopPp');
+(1, '2023-04-25', 'ASUS', 'laptop.jpg', b'1', '2023-04-25', 'ASUS'),
+(2, '2023-04-25', 'LENOVO', 'phukien.jpg', b'1', '2023-04-25', 'LENOVO'),
+(3, '2023-06-01', 'LG', 'manhinh.jpg', b'1', '2023-05-21', 'LG'),
+(4, '2023-06-01', 'HP', 'pc.jpg', b'1', '2023-05-01', 'HP'),
+(9, '2023-05-05', 'SAMSUNG', NULL, b'1', '2023-05-05', 'SAMSUNG');
 
 -- --------------------------------------------------------
 
@@ -163,7 +163,7 @@ CREATE TABLE `cart_item` (
 
 INSERT INTO `cart_item` (`id`, `quantity`, `account_id`, `attribute_id`, `last_price`, `is_active`) VALUES
 (39, 0, 2, 116, 168000, 0),
-(40, 0, 2, 125, 240000, 0);
+(40, 0, 1, 125, 240000, 0);
 
 -- --------------------------------------------------------
 
@@ -185,11 +185,13 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `create_date`, `description`, `is_active`, `modify_date`, `name`) VALUES
-(2, '2023-06-01', 'Phụ kiện', b'1', '2023-06-01', 'Phụ kiện'),
-(3, '2023-06-01', 'Màn hình', b'1', '2023-06-01', 'Màn hình'),
-(4, '2022-06-01', 'PC', b'1', '2022-06-01', 'PC máy tính'),
-(14, '2023-04-27', 'LapTop', b'1', '2023-04-27', 'LapTop'),
-(15, '2023-04-28', 'PC11', b'1', '2023-04-28', 'PC11');
+(2, '2023-05-01', 'Linh kiện chính hãng', b'1', '2023-05-01', 'Linh kiện máy tính'),
+(3, '2023-05-01', 'Màn hình chính hãng', b'1', '2023-05-01', 'Màn hình máy tính'),
+(4, '2022-05-01', 'Máy tính - Máy chủ chính hãng', b'1', '2023-05-01', 'Máy tính - Máy chủ'),
+(14, '2023-04-27', 'LapTop chính hãng', b'1', '2023-04-27', 'LapTop'),
+(15, '2023-04-28', 'Loa, Tai nghe, WebCam chính hãng', b'1', '2023-04-28', 'Loa, Tai nghe, WebCam'),
+(16, '2023-04-28', 'Thiết bị mạng chính hãng', b'1', '2023-04-28', 'Thiết bị mạng'),
+(17, '2023-04-28', 'Gaming Gear chính hãng', b'1', '2023-04-28', 'Gaming Gear');
 
 -- --------------------------------------------------------
 
@@ -313,9 +315,9 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `address`, `create_date`, `fullname`, `is_pending`, `modify_date`, `note`, `phone`, `ship_date`, `total`, `account_id`, `order_status_id`, `email`, `voucher_id`, `encode_url`, `seen`, `code`, `description`, `shipment`, `payment`) VALUES
-(10081, 'xxx, Phường Ngọc Thụy, Quận Long Biên, Thành phố Hà Nội, Phường Cống Vị, Quận Ba Đình, Thành phố Hà Nội', '2023-04-28', 'Nguyễn Công Minh', 1, '2023-05-05', 'mua hàng nhé =))', '0697856354', '2023-05-06', 134400, 2, 4, 'minhminhnc@gmail.com', 6, 'MTAwODE=', 0, 'A12232', NULL, 'ViettelPost', 'Thanh toán khi giao hàng(COD)'),
-(10082, 'xxx, Phường Ngọc Thụy, Quận Long Biên, Thành phố Hà Nội, Phường Trúc Bạch, Quận Ba Đình, Thành phố Hà Nội', '2023-04-28', 'Nguyễn Công Minh', 0, '2023-04-28', 'mua hàng', '0697856354', '2023-05-03', 168000, 2, 5, 'minhminhnc@gmail.com', NULL, 'MTAwODI=', 0, NULL, 'Gojek - ko nhu cầu', NULL, 'Thanh toán khi giao hàng(COD)'),
-(10083, 'xxx, Phường Ngọc Thụy, Quận Long Biên, Thành phố Hà Nội, Phường Tứ Liên, Quận Tây Hồ, Thành phố Hà Nội', '2023-05-05', 'Nguyễn Công MinhaAA', 0, '2023-05-05', 'mua hàng', '0697856354', '2023-05-10', 240000, 2, 5, 'minhminhnc@gmail.com', NULL, 'MTAwODM=', 0, NULL, 'Gojek - ko thích', NULL, 'Thanh toán khi giao hàng(COD)');
+(10081, '34A,Ngọc Thụy, Quận Long Biên, Thành phố Hà Nội', '2023-04-28', 'Nghiêm Văn Trường', 1, '2023-05-05', 'mua hàng nhé =))', '0697856354', '2023-05-06', 134400, 2, 4, 'Nghiemtruong@gmail.com', 6, 'MTAwODE=', 0, 'A12232', NULL, 'ViettelPost', 'Thanh toán khi giao hàng(COD)'),
+(10082, '76K, Phường Trúc Bạch, Quận Ba Đình, Thành phố Hà Nội', '2023-04-28', 'Nguyễn  Minh', 0, '2023-04-28', 'mua hàng', '0697856354', '2023-05-03', 168000, 2, 5, 'minhminhnc@gmail.com', NULL, 'MTAwODI=', 0, NULL, 'Gojek - ko nhu cầu', NULL, 'Thanh toán khi giao hàng(COD)'),
+(10083, '85 đường ngọc lâm, Phường Tứ Liên, Quận Tây Hồ, Thành phố Hà Nội', '2023-05-05', 'Nghiêm Trường', 0, '2023-05-05', 'mua hàng', '0697856354', '2023-05-10', 240000, 2, 5, 'nvt@gmail.com', NULL, 'MTAwODM=', 0, NULL, 'Gojek - ko thích', NULL, 'Thanh toán khi giao hàng(COD)');
 
 -- --------------------------------------------------------
 
@@ -360,11 +362,11 @@ CREATE TABLE `order_status` (
 --
 
 INSERT INTO `order_status` (`id`, `create_date`, `description`, `name`, `update_date`) VALUES
-(1, '2022-06-01', 'Đơn hàng tạo mới', 'Chờ xác nhận', '2022-06-01'),
-(2, '2022-06-01', 'Đơn hàng đang được xử lí', 'Đang xử lí', '2022-06-01'),
-(3, '2022-06-01', 'Đơn hàng đang vận chuyển', 'Đang vận chuyển', '2022-06-01'),
-(4, '2022-06-01', 'Đơn hàng giao thành công', 'Đã giao', '2022-06-01'),
-(5, '2022-06-01', 'Đơn hàng đã hủy', 'Đã hủy', '2022-06-01');
+(1, '2023-05-01', 'Đơn hàng tạo mới', 'Chờ xác nhận', '2023-05-01'),
+(2, '2023-04-01', 'Đơn hàng đang được xử lí', 'Đang xử lí', '2023-04-01'),
+(3, '2023-03-03', 'Đơn hàng đang vận chuyển', 'Đang vận chuyển', '2023-03-04'),
+(4, '2023-03-05', 'Đơn hàng giao thành công', 'Đã giao', '2023-03-08'),
+(5, '2023-04-08', 'Đơn hàng đã hủy', 'Đã hủy', '2023-06-01');
 
 -- --------------------------------------------------------
 
@@ -378,7 +380,7 @@ CREATE TABLE `products` (
   `create_date` date NOT NULL,
   `description` varchar(1000) NOT NULL,
   `modify_date` date NOT NULL,
-  `name` varchar(50) NOT NULL,
+  `name` varchar(255) NOT NULL,
   `view` bigint(20) NOT NULL,
   `brand_id` bigint(20) DEFAULT NULL,
   `sale_id` bigint(20) DEFAULT NULL,
@@ -462,9 +464,9 @@ CREATE TABLE `roles` (
 --
 
 INSERT INTO `roles` (`id`, `create_date`, `modify_date`, `name`) VALUES
-(1, '2022-06-01', '2022-06-01', 'ADMIN'),
-(2, '2022-06-01', '2022-06-01', 'EMP'),
-(3, '2022-06-01', '2022-06-01', 'CUS');
+(1, '2023-05-01', '2023-05-01', 'ADMIN'),
+(2, '2023-05-01', '2023-05-01', 'EMP'),
+(3, '2023-05-01', '2023-05-01', 'CUS');
 
 -- --------------------------------------------------------
 
@@ -487,9 +489,9 @@ CREATE TABLE `sales` (
 --
 
 INSERT INTO `sales` (`id`, `create_date`, `description`, `discount`, `is_active`, `modify_date`, `name`) VALUES
-(1, '2022-06-01', 'Chương trình mặc định', 0, b'1', '2022-06-01', 'Mặc định'),
-(2, '2022-06-01', 'Thông thường', 20, b'1', '2022-06-01', 'Thông thường'),
-(3, '2022-06-01', 'Siêu giảm giá', 30, b'1', '2022-06-01', 'Siêu giảm giá');
+(1, '2023-05-01', 'Chương trình mặc định', 0, b'1', '2023-05-01', 'Mặc định'),
+(2, '2023-05-01', 'Thông thường', 20, b'1', '2023-05-01', 'Thông thường'),
+(3, '2023-05-01', 'Siêu giảm giá', 30, b'1', '2023-05-01', 'Siêu giảm giá');
 
 -- --------------------------------------------------------
 
@@ -512,12 +514,12 @@ CREATE TABLE `vouchers` (
 --
 
 INSERT INTO `vouchers` (`id`, `code`, `count`, `create_date`, `discount`, `expire_date`, `is_active`) VALUES
-(1, 'ADIDAS2022', 1, '2022-08-28', 50, '2022-08-30', 1),
-(2, 'NIKE2022', 1, '2022-06-01', 30, '2022-06-01', 0),
-(3, 'NIKE2021', 0, '2022-08-27', 30, '2022-08-30', 1),
-(4, 'ADIDAS888', 0, '2022-08-25', 30, '2022-08-31', 1),
-(5, 'ADIDAS8888', 0, '2022-08-25', 10, '2022-08-30', 1),
-(6, 'ADIDAS111', 0, '2022-08-25', 20, '2022-09-14', 1);
+(1, 'LAP2023', 5, '2023-05-07', 50, '2023-06-30', 1),
+(2, 'PC2023', 5, '2023-05-01', 30, '2023-06-01', 0),
+(3, 'PK2023', 2, '2023-05-10', 30, '2023-05-30', 1),
+(4, 'MOUSE2023', 3, '2023-03-02', 30, '2023-04-02', 1),
+(5, 'TC2023', 1, '2023-04-02', 60, '2023-06-02', 1),
+(6, 'NVT2023', 10, '2023-04-25', 10, '2023-05-25', 1);
 
 --
 -- Chỉ mục cho các bảng đã đổ

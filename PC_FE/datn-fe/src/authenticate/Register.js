@@ -190,12 +190,12 @@ const Register = () => {
                       {/* </div> */}
                     </div>
                     <div className="mt-4 pt-2 mb-3">
-                      <button className="btn btn-primary btn-lg" type="submit">
+                      <button className="btn btn-primary btn-lgg" type="submit">
                         Đăng kí
                       </button>
                     </div>
                     <div>
-                      <p className="mb-0 mb">
+                      <p className="mb-0 mbb">
                         Đã có tài khoản?{" "}
                         <NavLink to="/sign-in" exact className="text-white-50 fw-bold">
                           Đăng nhập ngay

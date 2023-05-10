@@ -41,10 +41,7 @@ const OrderForm = () => {
     getOrderDetailByOrderId(id.id)
       .then((resp) => {
         setOrderDetail(resp.data);
-        const result = resp.data.reduce(
-          (price, item) => price + item.sellPrice * item.quantity,
-          0
-        );
+        const result = resp.data.reduce((price, item) => price + item.sellPrice * item.quantity, 0);
         setSub(result);
       })
       .catch((error) => console.log(error));
@@ -58,14 +55,14 @@ const OrderForm = () => {
       phone: data.phone,
       email: data.email,
       note: data.note,
-      isPending: data.isPending
-    }
-     updateOrder(result)
-     .then(() => {
-      toast.success("Cập nhật thành công.");
-      history.push('/orders')
-     })
-     .catch((error) => toast.error(error.response.data.Errors));
+      isPending: data.isPending,
+    };
+    updateOrder(result)
+      .then(() => {
+        toast.success("Cập nhật thành công.");
+        history.push("/orders");
+      })
+      .catch((error) => toast.error(error.response.data.Errors));
   };
   return (
     <div className="pb-3 container-fluid card">
@@ -80,21 +77,16 @@ const OrderForm = () => {
           <ul className="list-group mb-3">
             {orderDetail &&
               orderDetail.map((item, index) => (
-                <li
-                  className="list-group-item d-flex justify-content-between lh-sm"
-                  key={index}
-                >
+                <li className="list-group-item d-flex justify-content-between lh-sm" key={index}>
                   <div>
-                    <h6 className="my-0">
+                    {/* <h6 className="my-0">
                       {item.attribute.id} - {item.attribute.size}
-                    </h6>
+                    </h6> */}
                     <small className="text-muted">
                       {item.sellPrice.toLocaleString()} x {item.quantity}
                     </small>
                   </div>
-                  <strong>
-                    {(item.sellPrice * item.quantity).toLocaleString()}
-                  </strong>
+                  <strong>{(item.sellPrice * item.quantity).toLocaleString()}</strong>
                 </li>
               ))}
             {sub > amount && (
@@ -111,10 +103,7 @@ const OrderForm = () => {
         </div>
         <div className="col-md-7 col-lg-8">
           <h4 className="mb-3">Địa chỉ nhận hàng</h4>
-          <form
-            className="needs-validation"
-            onSubmit={handleSubmit(onSubmitHandler)}
-          >
+          <form className="needs-validation" onSubmit={handleSubmit(onSubmitHandler)}>
             <div className="row g-3">
               <div className="col-12 mt-2">
                 <label className="form-label">Địa chỉ</label>
@@ -187,30 +176,18 @@ const OrderForm = () => {
               </div>
               <div className="col-12 mt-2">
                 <label className="form-label">Ghi chú</label>
-                <textarea
-                  className="form-control"
-                  id="exampleFormControlTextarea1"
-                  rows={3}
-                  {...register("note", { required: false })}
-                />
+                <textarea className="form-control" id="exampleFormControlTextarea1" rows={3} {...register("note", { required: false })} />
               </div>
               <div className="col-sm-6 mt-2">
                 <label className="form-label">Trạng thái thanh toán</label>
-                <select
-                  className="form-control"
-                  {...register("isPending", { required: false })}
-                >
+                <select className="form-control" {...register("isPending", { required: false })}>
                   <option value="false">Chưa thanh toán</option>
                   <option value="true">Đã thanh toán</option>
                 </select>
               </div>
               <div className="col-sm-6 mt-2">
                 <label className="form-label">Trạng thái đơn hàng</label>
-                <select
-                  className="form-control"
-                  {...register("orderStatus", { required: false })}
-                  disabled={true}
-                >
+                <select className="form-control" {...register("orderStatus", { required: false })} disabled={true}>
                   {orderStatus &&
                     orderStatus.map((item, index) => (
                       <option key={index} value={item.id}>
@@ -221,11 +198,7 @@ const OrderForm = () => {
               </div>
             </div>
 
-            <button
-              className="btn btn-primary btn-lg mt-5 mb-5"
-              type="submit"
-              style={{ marginLeft: 680 }}
-            >
+            <button className="btn btn-primary btn-lg mt-5 mb-5" type="submit" style={{ marginLeft: 680 }}>
               Cập nhật
             </button>
           </form>

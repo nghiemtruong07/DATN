@@ -75,7 +75,7 @@ const Home = (props) => {
         </div>
       </div>
       <div className="col-11 container-fluid card">
-        <h4 className="title text-primary"> Sản phẩm Lap top :</h4>
+        <h4 className="title text-primary"> Sản phẩm Lap top</h4>
         <div className="row padding d-flex">
           {products.map((item, index) => (
             <div className="col-md-4 mb-3" key={index}>
