@@ -5,7 +5,6 @@ import Chart from "react-apexcharts";
 import { Link } from "react-router-dom";
 import MiniTable from "../table/MiniTable";
 
-
 const chartOptions = {
   series: [
     {
@@ -29,17 +28,7 @@ const chartOptions = {
       curve: "smooth",
     },
     xaxis: {
-      categories: [
-        "Jan",
-        "Feb",
-        "Mar",
-        "Apr",
-        "May",
-        "Jun",
-        "Jul",
-        "Aug",
-        "Sep",
-      ],
+      categories: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep"],
     },
     legend: {
       position: "top",
@@ -54,7 +43,7 @@ const topCustomers = {
   head: ["user", "total orders", "total spending"],
   body: [
     {
-      username: "Xuân Tân",
+      username: "Nghiêm Trường",
       order: "490",
       price: "$15,870",
     },
@@ -99,26 +88,13 @@ const Dashboard = () => {
         <div className="col-6">
           <div className="row">
             {statusCards.map((item, index) => (
-              <div className="col-6">
-                {
-                  <StatusCard
-                    icon={item.icon}
-                    count={item.count}
-                    title={item.title}
-                  />
-                }
-              </div>
+              <div className="col-6">{<StatusCard icon={item.icon} count={item.count} title={item.title} />}</div>
             ))}
           </div>
         </div>
         <div className="col-6">
           <div className="card full-height">
-            <Chart
-              options={chartOptions.options}
-              series={chartOptions.series}
-              type="line"
-              height="100%"
-            />
+            <Chart options={chartOptions.options} series={chartOptions.series} type="line" height="100%" />
           </div>
         </div>
         <div className="col-6">
@@ -138,7 +114,7 @@ const Dashboard = () => {
               <Link to="/">view all</Link>
             </div>
           </div>
-        </div>  
+        </div>
         <div className="col-6">
           <div className="card">
             <div className="card__header">
@@ -156,7 +132,7 @@ const Dashboard = () => {
               <Link to="/">view all</Link>
             </div>
           </div>
-        </div>       
+        </div>
       </div>
     </div>
   );

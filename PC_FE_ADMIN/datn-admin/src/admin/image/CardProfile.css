@@ -163,3 +163,7 @@ button:hover {
   transition: all 0.1s linear;
   cursor: pointer;
 }
+.price_update{
+  height: auto;
+  width: 200px;
+}

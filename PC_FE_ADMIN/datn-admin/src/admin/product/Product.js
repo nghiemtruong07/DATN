@@ -23,7 +23,7 @@ const Product = () => {
       setTotal(response.data.totalPages);
     });
 
-    getBrands(1,10)
+    getBrands(1, 10)
       .then((resp) => setBrand(resp.data.content))
       .catch((error) => console.log(error));
   };
@@ -33,15 +33,8 @@ const Product = () => {
   };
 
   var rows = new Array(total).fill(0).map((zero, index) => (
-    <li
-      className={page === index + 1 ? "page-item active" : "page-item"}
-      key={index}
-    >
-      <button
-        className="page-link"
-        style={{ borderRadius: 50 }}
-        onClick={() => onChangePage(index + 1)}
-      >
+    <li className={page === index + 1 ? "page-item active" : "page-item"} key={index}>
+      <button className="page-link" style={{ borderRadius: 50 }} onClick={() => onChangePage(index + 1)}>
         {index + 1}
       </button>
     </li>
@@ -63,20 +56,13 @@ const Product = () => {
     <div className="col-12">
       <div className="card">
         <div className="card__header">
-          <NavLink
-            to="/add-product"
-            className="btn btn-primary"
-            style={{ borderRadius: 50 }}
-          >
+          <NavLink to="/add-product" className="btn btn-primary" style={{ borderRadius: 50 }}>
             Thêm sản phẩm
           </NavLink>
         </div>
         <div className="row mb-3 mt-3">
           <div className="col-sm-4 mt-2">
-            <select
-              className="form-control"
-              onChange={(event) => getProductByBrandHandler(event.target.value)}
-            >
+            <select className="form-control" onChange={(event) => getProductByBrandHandler(event.target.value)}>
               <option value="0">Tất cả</option>
               {brand &&
                 brand.map((item, index) => (
@@ -108,7 +94,7 @@ const Product = () => {
                       <tr key={index}>
                         <th scope="row">
                           <NavLink to={`/product-view/${item.id}`} exact>
-                            #{index + 1}
+                            {index + 1}
                           </NavLink>
                         </th>
                         <th>{item.name}</th>
@@ -116,20 +102,12 @@ const Product = () => {
                         <th>{item.brand}</th>
                         <th>
                           {" "}
-                          <img
-                            className="img-fluid"
-                            style={{ width: "100px", height: "100px" }}
-                            src={require(`../../static/images/${item.image}`)}
-                            alt=""
-                          />
+                          <img className="img-fluid" style={{ width: "100px", height: "100px" }} src={require(`../../static/images/${item.image}`)} alt="" />
                         </th>
                         <th>{item.active ? "Đang bán" : "Dừng bán"}</th>
                         <th>
                           <NavLink to={`/product-detail/${item.id}`} exact>
-                            <i
-                              className="fa fa-pencil-square-o"
-                              aria-hidden="true"
-                            ></i>
+                            <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
                           </NavLink>
                         </th>
                       </tr>
@@ -142,21 +120,13 @@ const Product = () => {
         <nav aria-label="Page navigation">
           <ul className="pagination offset-5 mt-3">
             <li className={page === 1 ? "page-item disabled" : "page-item"}>
-              <button
-                className="page-link"
-                style={{ borderRadius: 50 }}
-                onClick={() => onChangePage(1)}
-              >
+              <button className="page-link" style={{ borderRadius: 50 }} onClick={() => onChangePage(1)}>
                 {`<<`}
               </button>
             </li>
             {rows}
             <li className={page === total ? "page-item disabled" : "page-item"}>
-              <button
-                className="page-link"
-                style={{ borderRadius: 50 }}
-                onClick={() => onChangePage(total)}
-              >
+              <button className="page-link" style={{ borderRadius: 50 }} onClick={() => onChangePage(total)}>
                 {`>>`}
               </button>
             </li>

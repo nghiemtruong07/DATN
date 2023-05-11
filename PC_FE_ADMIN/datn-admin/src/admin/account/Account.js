@@ -1,17 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import {
-  getAccounts,
-  getTotalPage,
-  getAccountByRole
-} from "../../api/AccountApi";
+import { getAccounts, getTotalPage, getAccountByRole } from "../../api/AccountApi";
 
 import Badge from "../badge/Badge";
 
 const roleName = {
-  "EMP": "primary",
-  "CUS": "success",
-  "ADMIN": "danger",
+  EMP: "primary",
+  CUS: "success",
+  ADMIN: "danger",
 };
 
 const active = {
@@ -25,15 +21,8 @@ const Account = () => {
   const [role, setRole] = useState("TẤT CẢ");
 
   var rows = new Array(total).fill(0).map((zero, index) => (
-    <li
-      className={page === index + 1 ? "page-item active" : "page-item"}
-      key={index}
-    >
-      <button
-        className="page-link"
-        style={{ borderRadius: 50 }}
-        onClick={() => onChangePage(index + 1)}
-      >
+    <li className={page === index + 1 ? "page-item active" : "page-item"} key={index}>
+      <button className="page-link" style={{ borderRadius: 50 }} onClick={() => onChangePage(index + 1)}>
         {index + 1}
       </button>
     </li>
@@ -58,7 +47,7 @@ const Account = () => {
 
   const getAccountByRoleHandler = (value) => {
     setRole(value);
-    if (value === "TẤT CẢ") {   
+    if (value === "TẤT CẢ") {
       setPage(1);
       onLoad();
     } else {
@@ -71,11 +60,7 @@ const Account = () => {
   return (
     <div className="card">
       <div className="card__header">
-        <NavLink
-          to="/add-account"
-          className="btn btn-primary"
-          style={{ borderRadius: 50 }}
-        >
+        <NavLink to="/add-account" className="btn btn-primary" style={{ borderRadius: 50 }}>
           Thêm tài khoản
         </NavLink>
       </div>
@@ -128,6 +113,7 @@ const Account = () => {
       <table className="table table-bordered">
         <thead>
           <tr>
+            <th scope="col">STT</th>
             <th scope="col">Username</th>
             <th scope="col">Họ tên</th>
             <th scope="col">Giới tính</th>
@@ -142,23 +128,18 @@ const Account = () => {
           {account &&
             account.map((item, index) => (
               <tr key={index}>
-                <th scope="row">{item.username}</th>
+                <th scope="col">{index + 1}</th>
+                <td scope="row">{item.username}</td>
                 <td>{item.fullName}</td>
                 <td>{item.gender}</td>
                 <td>{item.phone}</td>
                 <td>{item.email}</td>
                 <td>
                   {" "}
-                  <Badge
-                    type={roleName[item.roleName]}
-                    content={item.roleName}
-                  />
+                  <Badge type={roleName[item.roleName]} content={item.roleName} />
                 </td>
                 <td>
-                  <Badge
-                    type={active[item.isActive]}
-                    content={item.isActive ? "Hoạt động" : "Không hoạt động"}
-                  />
+                  <Badge type={active[item.isActive]} content={item.isActive ? "Hoạt động" : "Không hoạt động"} />
                 </td>
                 <td>
                   <NavLink to={`/account-detail/${item.id}`} exact>
@@ -172,21 +153,13 @@ const Account = () => {
       <nav aria-label="Page navigation">
         <ul className="pagination offset-5 mt-3">
           <li className={page === 1 ? "page-item disabled" : "page-item"}>
-            <button
-              className="page-link"
-              style={{ borderRadius: 50 }}
-              onClick={() => onChangePage(1)}
-            >
+            <button className="page-link" style={{ borderRadius: 50 }} onClick={() => onChangePage(1)}>
               {`<<`}
             </button>
           </li>
           {rows}
           <li className={page === total ? "page-item disabled" : "page-item"}>
-            <button
-              className="page-link"
-              style={{ borderRadius: 50 }}
-              onClick={() => onChangePage(total)}
-            >
+            <button className="page-link" style={{ borderRadius: 50 }} onClick={() => onChangePage(total)}>
               {`>>`}
             </button>
           </li>

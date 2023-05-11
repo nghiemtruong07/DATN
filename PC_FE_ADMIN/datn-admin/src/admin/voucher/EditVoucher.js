@@ -24,7 +24,7 @@ const EditVoucher = () => {
     const result = {
       ...data,
       id: id,
-      createDate: null
+      createDate: null,
     };
     console.log(result);
     updateVoucher(result)
@@ -42,10 +42,7 @@ const EditVoucher = () => {
       </div>
       <div className="row">
         <div className="col-10 offset-1">
-          <form
-            className="needs-validation"
-            onSubmit={handleSubmit(submitHandler)}
-          >
+          <form className="needs-validation" onSubmit={handleSubmit(submitHandler)}>
             <div className="row g-3">
               <div className="col-sm-6">
                 <label className="form-label">Code</label>
@@ -101,8 +98,8 @@ const EditVoucher = () => {
                 <label className="form-label">Ngày hết hạn</label>
                 <input
                   type="date"
-                  min="2022-01-01"
-                  max="2023-01-01"
+                  min="2023-01-01"
+                  max="2024-01-01"
                   className="form-control"
                   {...register("expireDate", {
                     required: true,
@@ -111,20 +108,13 @@ const EditVoucher = () => {
               </div>
               <div className="col-sm-6 mt-5">
                 <label className="form-label">Trạng thái hoạt động</label>
-                <select
-                  className="form-control"
-                  {...register("isActive", { required: false })}
-                >
+                <select className="form-control" {...register("isActive", { required: false })}>
                   <option value="false">Không hoạt động</option>
                   <option value="true">Hoạt động</option>
                 </select>
               </div>
             </div>
-            <button
-              className="btn btn-primary btn-lg mt-5 mb-5"
-              type="submit"
-              style={{ marginLeft: 80, borderRadius: 50 }}
-            >
+            <button className="btn btn-primary btn-lg mt-5 mb-5" type="submit" style={{ marginLeft: 80, borderRadius: 50 }}>
               Cập nhật
             </button>
           </form>

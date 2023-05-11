@@ -85,7 +85,7 @@ const Header = (props) => {
             </li>
             <li className={props.header === 2 ? "nav-item mr-2  mini-item active" : "nav-item mr-2  mini-item"}>
               <NavLink className="nav-link" to="/store" exact>
-                Sản phẩm
+                Danh Mục
               </NavLink>
             </li>
             <li className={props.header === 3 ? "nav-item mr-2  mini-item active" : "nav-item mr-2  mini-item"}>

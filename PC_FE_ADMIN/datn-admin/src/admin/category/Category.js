@@ -8,15 +8,8 @@ const Category = () => {
   const [total, setTotal] = useState();
 
   var rows = new Array(total).fill(0).map((zero, index) => (
-    <li
-      className={page === index + 1 ? "page-item active" : "page-item"}
-      key={index}
-    >
-      <button
-        className="page-link"
-        style={{ borderRadius: 50 }}
-        onClick={() => onChangePage(index + 1)}
-      >
+    <li className={page === index + 1 ? "page-item active" : "page-item"} key={index}>
+      <button className="page-link" style={{ borderRadius: 50 }} onClick={() => onChangePage(index + 1)}>
         {index + 1}
       </button>
     </li>
@@ -31,7 +24,7 @@ const Category = () => {
   }, [page]);
 
   const onLoad = () => {
-    getCategory(page, 4).then((resp) => {
+    getCategory(page, 9).then((resp) => {
       setCategory(resp.data.content);
       setTotal(resp.data.totalPages);
     });
@@ -40,12 +33,8 @@ const Category = () => {
   return (
     <div className="card">
       <div className="card__header mb-5">
-        <NavLink
-          to="/add-category"
-          className="btn btn-primary"
-          style={{ borderRadius: 50 }}
-        >
-          Thêm loại sản phẩm
+        <NavLink to="/add-category" className="btn btn-primary" style={{ borderRadius: 50 }}>
+          Thêm Danh Mục
         </NavLink>
       </div>
       <table className="table table-bordered">
@@ -80,21 +69,13 @@ const Category = () => {
       <nav aria-label="Page navigation">
         <ul className="pagination offset-5 mt-3">
           <li className={page === 1 ? "page-item disabled" : "page-item"}>
-            <button
-              className="page-link"
-              style={{ borderRadius: 50 }}
-              onClick={() => onChangePage(1)}
-            >
+            <button className="page-link" style={{ borderRadius: 30 }} onClick={() => onChangePage(1)}>
               {`<<`}
             </button>
           </li>
           {rows}
           <li className={page === total ? "page-item disabled" : "page-item"}>
-            <button
-              className="page-link"
-              style={{ borderRadius: 50 }}
-              onClick={() => onChangePage(total)}
-            >
+            <button className="page-link" style={{ borderRadius: 30 }} onClick={() => onChangePage(total)}>
               {`>>`}
             </button>
           </li>
