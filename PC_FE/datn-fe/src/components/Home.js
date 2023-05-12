@@ -31,12 +31,12 @@ const Home = (props) => {
 
   useEffect(() => {
     getAllProducts(1, 100, active).then((response) => {
-      let LapTop = response.data.content.filter((obj) => {
-        return obj.brand === "Laptop";
+      let MTMC = response.data.content.filter((obj) => {
+        return obj.brand === "Máy tính - Máy chủ";
       });
-      setProducts(LapTop);
+      setProducts(MTMC);
       let Manhinhs = response.data.content.filter((obj) => {
-        return obj.brand === "Màn hình";
+        return obj.brand === "LapTop";
       });
       setProductsMH(Manhinhs);
       //setTotal(1);
@@ -75,7 +75,7 @@ const Home = (props) => {
         </div>
       </div>
       <div className="col-11 container-fluid card">
-        <h4 className="title text-primary"> Sản phẩm Lap top</h4>
+        <h4 className="title text-primary"> Sản phẩm Máy tính - Máy chủ</h4>
         <div className="row padding d-flex">
           {products.map((item, index) => (
             <div className="col-md-4 mb-3" key={index}>

@@ -82,8 +82,8 @@ const Product = () => {
                     <th scope="col">#</th>
                     <th scope="col">Tên sản phẩm</th>
                     <th scope="col">Mã sản phẩm</th>
-                    <th scope="col">Thương hiệu</th>
-                    <th scope="col">Mô tả</th>
+                    {/* <th scope="col">Thương hiệu</th> */}
+                    <th scope="col">Hình ảnh</th>
                     <th scope="col">Trạng thái</th>
                     <th scope="col">Cập nhật</th>
                   </tr>
@@ -99,7 +99,7 @@ const Product = () => {
                         </th>
                         <th>{item.name}</th>
                         <th>{item.code}</th>
-                        <th>{item.brand}</th>
+                        {/* <th>{item.brand}</th> */}
                         <th>
                           {" "}
                           <img className="img-fluid" style={{ width: "100px", height: "100px" }} src={require(`../../static/images/${item.image}`)} alt="" />

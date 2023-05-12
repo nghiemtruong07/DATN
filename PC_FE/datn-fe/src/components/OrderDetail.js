@@ -27,12 +27,6 @@ const OrderDetail = (props) => {
       const result = resp.data.reduce((price, item) => price + item.sellPrice * item.quantity, 0);
       setAmount(result);
     });
-    getProductById(encode)
-      .then((res) => {
-        setNameProduct(res.data);
-        console.log("trường");
-      })
-      .catch((error) => console.log(error));
   };
 
   return (
@@ -59,7 +53,7 @@ const OrderDetail = (props) => {
                 orderDetail.map((item, index) => (
                   <tr key={index}>
                     <th scope="row">{item.attribute.id}</th>
-                    <td>{}</td>
+                    <td>{item.attribute.name}</td>
                     <td>{item.sellPrice.toLocaleString()}₫</td>
                     <td>{item.quantity}</td>
                     <td>{(item.sellPrice * item.quantity).toLocaleString()}₫</td>

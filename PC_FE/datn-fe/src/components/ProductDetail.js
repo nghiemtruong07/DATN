@@ -168,15 +168,13 @@ const ProductDetail = (props) => {
                     <hr />
                     {/* <p className="card-text fw-bold fs-5">Mã SP: {item.code}</p> */}
                     <hr />
-                    <h4 className="card-text fw-bolder text-danger fs-5">
-                      Giá bán: {price && ((price * (100 - item.discount)) / 100).toLocaleString() + " đ"}
+                    <h4 className="card-text fw-bolder text-danger fs-5" style={{ fontSize: "34px" }}>
+                      Giá khuyến mại: {price && ((price * (100 - item.discount)) / 100).toLocaleString() + " đ"}
                     </h4>
-                    <h6 className="card-text fw-bolder fs-5">
-                      Giá gốc: <del>{price && price.toLocaleString() + " đ"}</del>
+                    <h6 className="card-text fw-bolder fs-5" style={{ fontSize: "28px" }}>
+                      Giá niêm yết: <del>{price && price.toLocaleString() + " đ"}</del>
                     </h6>
-                    <h6 className="card-text fw-bolder fs-5" hidden>
-                      Sản phẩm còn: {stock && stock + " đôi"}
-                    </h6>
+                    <h4 className="card-text fw-bolder fs-5">Kho: {stock && stock}</h4>
                     <hr />
                     <div className="div" hidden>
                       <label className="mr-5">Chọn size</label>
@@ -268,8 +266,8 @@ const ProductDetail = (props) => {
                 {relate &&
                   relate.map((item, index) => (
                     <div className="col-md-4 mb-3" key={index}>
-                      <div className="card h-100 mini-pro">
-                        <div className="d-flex justify-content-between position-absolute w-100"></div>
+                      <div className="card h-10 mini-pro">
+                        <div className="d-flex justify-content-between position-absolute w-10"></div>
                         <NavLink to={`/product-detail/${item.id}`}>
                           <img src={require(`../static/images/${item.image}`)} style={{ width: 150, height: 150 }} alt="Product" className="mini-card" />
                         </NavLink>

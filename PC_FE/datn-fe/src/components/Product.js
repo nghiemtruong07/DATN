@@ -5,23 +5,38 @@ import "./sidebar/sidebar.css";
 
 const brands = [
   {
-    display_name: "LapTop",
-    value: "14",
+    display_name: "Linh Kiện Máy Tính",
+    value: "1",
     icon: "bx bx-category-alt",
   },
   {
-    display_name: "Phụ kiện",
+    display_name: "Màn Hình Máy Tính",
     value: "2",
     icon: "bx bx-category-alt",
   },
   {
-    display_name: "Màn hình",
+    display_name: "Máy Tính - Máy Chủ",
     value: "3",
     icon: "bx bx-category-alt",
   },
   {
-    display_name: "PC",
+    display_name: "Loa, Tai Nghe, WebCam",
     value: "4",
+    icon: "bx bx-category-alt",
+  },
+  {
+    display_name: "Thiết Bị Mạng",
+    value: "5",
+    icon: "bx bx-category-alt",
+  },
+  {
+    display_name: "Gaming Gear",
+    value: "6",
+    icon: "bx bx-category-alt",
+  },
+  {
+    display_name: "LAPTOP",
+    value: "7",
     icon: "bx bx-category-alt",
   },
 ];
@@ -80,10 +95,7 @@ const Product = (props) => {
   const [max, setMax] = useState(10000000);
 
   var rows = new Array(total).fill(0).map((zero, index) => (
-    <li
-      className={page === index + 1 ? "page-item active" : "page-item"}
-      key={index}
-    >
+    <li className={page === index + 1 ? "page-item active" : "page-item"} key={index}>
       <button className="page-link" onClick={() => onChangePage(index + 1)}>
         {index + 1}
       </button>
@@ -165,20 +177,13 @@ const Product = (props) => {
         <div className="row">
           <div className="col-2.5">
             <div className="col mini-card">
-              <h4 className="text-danger fw-bolder">Thương hiệu</h4>
+              <h4 className="text-danger fw-bolder">Danh Mục</h4>
               <ul className="list-group">
                 {brands.map((item, index) => (
-                  <div
-                    className="sidebar__item"
-                    key={index}
-                    onClick={() => chooseBrandHandler(item.value)}
-                  >
+                  <div className="sidebar__item" key={index}>
                     <div
-                      className={
-                        brand.includes(item.value)
-                          ? `sidebar__item-inner active`
-                          : `sidebar__item-inner`
-                      }
+                      className={brand.includes(item.value) ? `sidebar__item-inner active` : `sidebar__item-inner`}
+                      onClick={() => chooseBrandHandler(item.value)}
                     >
                       <i className={item.icon}></i>
                       <span>{item.display_name}</span>
@@ -193,11 +198,7 @@ const Product = (props) => {
                 {prices.map((item, index) => (
                   <div className="sidebar__item" key={index}>
                     <div
-                      className={
-                        price.includes(item.value)
-                          ? `sidebar__item-inner active`
-                          : `sidebar__item-inner`
-                      }
+                      className={price.includes(item.value) ? `sidebar__item-inner active` : `sidebar__item-inner`}
                       onClick={() => choosePriceHandler(item.value)}
                     >
                       <i className={item.icon}></i>
@@ -220,28 +221,18 @@ const Product = (props) => {
                   products.map((item, index) => (
                     <div className="col-md-4 mb-3" key={index}>
                       <div className="card h-100">
-                       
                         <NavLink to={`/product-detail/${item.id}`}>
-                          <img
-                            src={require(`../static/images/${item.image}`)}
-                            style={{ width: 100, height: 100 }}
-                            alt="Product"
-                          />
+                          <img src={require(`../static/images/${item.image}`)} style={{ width: 100, height: 100 }} alt="Product" />
                         </NavLink>
                         <div className="card-body px-2 pb-2 pt-1">
                           <div className="d-flex justify-content-between">
                             <div>
-                              <p className="h4 text-primary">
-                                {item.price.toLocaleString()} Đ
-                              </p>
+                              <p className="h4 text-primary">{item.price.toLocaleString()} Đ</p>
                             </div>
-                          </div>                      
+                          </div>
                           <p className="mb-0">
                             <strong>
-                              <NavLink
-                                to={`/product-detail/${item.id}`}
-                                className="text-secondary"
-                              >
+                              <NavLink to={`/product-detail/${item.id}`} className="text-secondary">
                                 {item.name}
                               </NavLink>
                             </strong>
@@ -254,26 +245,19 @@ const Product = (props) => {
                             </small>
                           </p>
                           <div className="d-flex mb-3 justify-content-between">
-                            <div>                            
+                            <div>
                               <p className="mb-0 small">
                                 <b>Giá gốc: </b> {item.price.toLocaleString()} Đ
-                              </p>                           
+                              </p>
                             </div>
                           </div>
                           <div className="d-flex justify-content-between">
                             <div className="col px-0">
-                              <NavLink
-                                to={`/product-detail/${item.id}`}
-                                exact
-                                className="btn btn-outline-primary btn-block"
-                              >
+                              <NavLink to={`/product-detail/${item.id}`} exact className="btn btn-outline-primary btn-block">
                                 Thêm vào giỏ
-                                <i
-                                  className="fa fa-shopping-basket"
-                                  aria-hidden="true"
-                                ></i>
+                                <i className="fa fa-shopping-basket" aria-hidden="true"></i>
                               </NavLink>
-                            </div>                        
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -293,13 +277,8 @@ const Product = (props) => {
                 </button>
               </li>
               {rows}
-              <li
-                className={page === total ? "page-item disabled" : "page-item"}
-              >
-                <button
-                  className="page-link"
-                  onClick={() => onChangePage(total)}
-                >
+              <li className={page === total ? "page-item disabled" : "page-item"}>
+                <button className="page-link" onClick={() => onChangePage(total)}>
                   Last
                 </button>
               </li>

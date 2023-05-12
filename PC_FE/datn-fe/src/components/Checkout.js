@@ -37,13 +37,13 @@ const Checkout = (props) => {
     register,
     handleSubmit,
     formState: { errors },
-    reset
+    reset,
   } = useForm();
 
   useEffect(() => {
     onLoad();
   }, []);
- 
+
   const textHandler = (value) => {
     setText(value);
   };
@@ -54,36 +54,25 @@ const Checkout = (props) => {
         setCart(resp.data.filter((item) => props.buy.includes(item.id + "")));
         const result = resp.data
           .filter((item) => props.buy.includes(item.id + ""))
-          .reduce(
-            (price, item) =>
-              price +
-              (item.price * item.quantity * (100 - item.discount)) / 100,
-            0
-          );
+          .reduce((price, item) => price + (item.price * item.quantity * (100 - item.discount)) / 100, 0);
         setAmount(result);
       });
       const flag = {
         address: props.user.address,
         name: props.user.fullName,
         phone: props.user.phone,
-        email: props.user.email
-      }
+        email: props.user.email,
+      };
       reset(flag);
     } else {
-      setCart(
-        props.cartItem.filter((item) => props.buy.includes(item.id + ""))
-      );
+      setCart(props.cartItem.filter((item) => props.buy.includes(item.id + "")));
       const result = props.cartItem
         .filter((item) => props.buy.includes(item.id + ""))
-        .reduce(
-          (price, item) =>
-            price + (item.price * item.quantity * (100 - item.discount)) / 100,
-          0
-        );
+        .reduce((price, item) => price + (item.price * item.quantity * (100 - item.discount)) / 100, 0);
       setAmount(result);
     }
     props.changeHeaderHandler(3);
-    props.user ? console.log(props.user) : console.log('');
+    props.user ? console.log(props.user) : console.log("");
   };
 
   const voucherHandler = (value) => {
@@ -96,9 +85,7 @@ const Checkout = (props) => {
     } else {
       getVoucherByCode(voucher)
         .then((resp) => {
-          setAmount(
-            (prevState) => (prevState * (100 - resp.data.discount)) / 100
-          );
+          setAmount((prevState) => (prevState * (100 - resp.data.discount)) / 100);
           setFlag(true);
           toast.success("Áp dụng voucher thành công.");
           setSub((amount * resp.data.discount) / 100);
@@ -132,7 +119,7 @@ const Checkout = (props) => {
           setTimeout(() => {
             setLoading(false);
           }, 10000);
-          
+
           const order = {
             fullname: data.name,
             phone: data.phone,
@@ -221,52 +208,26 @@ const Checkout = (props) => {
           <ul className="list-group mb-3">
             {cart &&
               cart.map((item, index) => (
-                <li
-                  className="list-group-item d-flex justify-content-between lh-sm"
-                  key={index}
-                >
+                <li className="list-group-item d-flex justify-content-between lh-sm" key={index}>
                   <div>
                     <h6 className="my-0">
                       {item.name} - {item.size}
                     </h6>
                     <small className="text-muted">
-                      {(
-                        (item.price * (100 - item.discount)) /
-                        100
-                      ).toLocaleString()}{" "}
-                      x {item.quantity}
+                      {((item.price * (100 - item.discount)) / 100).toLocaleString()} x {item.quantity}
                     </small>
                   </div>
-                  <strong>
-                    {(
-                      ((item.price * (100 - item.discount)) / 100) *
-                      item.quantity
-                    ).toLocaleString()}
-                  </strong>
+                  <strong>{(((item.price * (100 - item.discount)) / 100) * item.quantity).toLocaleString()}</strong>
                 </li>
               ))}
             <li className="list-group-item d-flex justify-content-between bg-light">
               <div className="text-success">
                 <h6 className="my-2">Mã giảm giá</h6>
-                <input
-                  className="form-control my-2"
-                  value={voucher}
-                  disabled={flag}
-                  type="text"
-                  onChange={(e) => voucherHandler(e.target.value)}
-                />
-                <button
-                  type="button"
-                  className="btn btn-primary mr-3"
-                  onClick={useVoucherHandler}
-                >
+                <input className="form-control my-2" value={voucher} disabled={flag} type="text" onChange={(e) => voucherHandler(e.target.value)} />
+                <button type="button" className="btn btn-primary mr-3" onClick={useVoucherHandler}>
                   Áp dụng
                 </button>
-                <button
-                  type="button"
-                  className="btn btn-primary"
-                  onClick={refreshVoucherHandler}
-                >
+                <button type="button" className="btn btn-primary" onClick={refreshVoucherHandler}>
                   Làm mới
                 </button>
               </div>
@@ -282,31 +243,19 @@ const Checkout = (props) => {
               <strong>{amount && amount.toLocaleString()}</strong>
             </li>
           </ul>
-          <NavLink
-            to="/cart"
-            className={cart.length === 0 ? "mb-2 mr-5 disabled" : "mb-2 mr-5"}
-            exact
-          >
+          <NavLink to="/cart" className={cart.length === 0 ? "mb-2 mr-5 disabled" : "mb-2 mr-5"} exact>
             Quay về giỏ hàng
           </NavLink>
         </div>
         <div className="col-md-7 col-lg-8">
           <h4 className="mb-3">Địa chỉ nhận hàng</h4>
-          <form
-            className="needs-validation"
-            onSubmit={handleSubmit(handleShowFirst)}
-          >
+          <form className="needs-validation" onSubmit={handleSubmit(handleShowFirst)}>
             <div className="row g-3">
               <div className="col-sm-6">
                 <label htmlFor="firstName" className="form-label">
                   <strong>Tỉnh Thành</strong>
                 </label>
-                <select
-                  className="form-control"
-                  {...register("province", { required: true })}
-                  required
-                  onChange={(e) => onLoadDistrictHandler(e.target.value)}
-                >
+                <select className="form-control" {...register("province", { required: true })} required onChange={(e) => onLoadDistrictHandler(e.target.value)}>
                   <option selected disabled hidden></option>
                   {info &&
                     info.map((item, index) => (
@@ -320,12 +269,7 @@ const Checkout = (props) => {
                 <label htmlFor="lastName" className="form-label">
                   <strong>Quận Huyện</strong>
                 </label>
-                <select
-                  className="form-control"
-                  {...register("district", { required: true })}
-                  required
-                  onChange={(e) => onLoadWardHandler(e.target.value)}
-                >
+                <select className="form-control" {...register("district", { required: true })} required onChange={(e) => onLoadWardHandler(e.target.value)}>
                   <option selected disabled hidden></option>
                   {district &&
                     district.map((item, index) => (
@@ -339,11 +283,7 @@ const Checkout = (props) => {
                 <label htmlFor="lastName" className="form-label">
                   <strong>Phường Xã</strong>
                 </label>
-                <select
-                  className="form-control"
-                  {...register("ward", { required: true })}
-                  required
-                >
+                <select className="form-control" {...register("ward", { required: true })} required>
                   <option selected disabled hidden></option>
                   {ward &&
                     ward.map((item, index) => (
@@ -403,7 +343,6 @@ const Checkout = (props) => {
                   id="lastName"
                   {...register("phone", {
                     required: true,
-                   
                   })}
                 />
                 {errors.phone && (
@@ -435,13 +374,7 @@ const Checkout = (props) => {
                 <label htmlFor="address" className="form-label">
                   <strong>Ghi chú</strong>
                 </label>
-                <textarea
-                  className="form-control"
-                  id="exampleFormControlTextarea1"
-                  rows={3}
-                  defaultValue={""}
-                  {...register("note", { required: false })}
-                />
+                <textarea className="form-control" id="exampleFormControlTextarea1" rows={3} defaultValue={""} {...register("note", { required: false })} />
               </div>
             </div>
             <label htmlFor="lastName" className="form-label mt-3">
@@ -478,24 +411,14 @@ const Checkout = (props) => {
               </label>
               {text === "Chuyển khoản qua ngân hàng" && (
                 <div className="alert alert-dark">
-                  <p>
-                    Vui lòng ghi lại MÃ ĐƠN HÀNG và SỐ ĐIỆN THOẠI của bạn vào
-                    mục Nội dung thanh toán. Đơn hàng sẽ đươc giao sau khi tiền
-                    đã được chuyển.
-                  </p>
+                  <p>Vui lòng ghi lại MÃ ĐƠN HÀNG và SỐ ĐIỆN THOẠI của bạn vào mục Nội dung thanh toán. Đơn hàng sẽ đươc giao sau khi tiền đã được chuyển.</p>
                   <p>Ví dụ: 01234 - 0987654321</p>
                   <p>Thông tin tài khoản:</p>
-                  <p>
-                    Trần Thị Thủy - stk: 04136519801 - TPbank chi nhánh Hà Nội
-                  </p>
+                  <p>Nguyễn Thành Công - stk: 04136519801 - TPbank chi nhánh Hà Nội</p>
                 </div>
               )}
             </div>
-            <button
-              className="btn btn-primary btn-lg mt-5 mb-5"
-              type="submit"
-              style={{ marginLeft: 680 }}
-            >
+            <button className="btn btn-primary btn-lg mt-5 mb-5" type="submit" style={{ marginLeft: 680 }}>
               Đặt hàng
             </button>
           </form>
@@ -503,17 +426,11 @@ const Checkout = (props) => {
       </div>
       <Modal show={showFirst} onHide={handleCloseFirst}>
         <Modal.Header closeButton>
-          <Modal.Title style={{ textAlign: "center" }}>
-            Bạn đã chắc chắn chưa?
-          </Modal.Title>
+          <Modal.Title style={{ textAlign: "center" }}>Bạn đã chắc chắn chưa?</Modal.Title>
         </Modal.Header>
-        <Modal.Body>         
-        </Modal.Body>
+        <Modal.Body></Modal.Body>
         <Modal.Footer>
-          <Button
-            variant="danger"
-            onClick={() => onSubmitHandler(obj)}
-          >
+          <Button variant="danger" onClick={() => onSubmitHandler(obj)}>
             Xác nhận
           </Button>
           <Button variant="primary" onClick={handleCloseFirst}>

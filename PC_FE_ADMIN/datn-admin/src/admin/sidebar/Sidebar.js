@@ -40,7 +40,7 @@ const sidebar_items_1 = [
     icon: "bx bx-bar-chart-alt",
   },
   {
-    display_name: "Danh Mục Sản Phẩm",
+    display_name: "Thương Hiệu",
     route: "/categories",
     add: "/add-category",
     modify: "/category-detail",
@@ -54,7 +54,7 @@ const sidebar_items_1 = [
     icon: "bx bx-gift",
   },
   {
-    display_name: "Thương hiệu",
+    display_name: "Danh Mục Sản Phẩm",
     route: "/brand",
     add: "/add-brand",
     modify: "/brand-detail",

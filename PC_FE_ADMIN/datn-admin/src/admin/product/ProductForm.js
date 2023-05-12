@@ -106,7 +106,7 @@ const ProductForm = () => {
   return (
     <div className="pb-3 container-fluid card">
       <div className="col-10 offset-1 text-center">
-        <h1 className="text-danger">Sản phẩm</h1>
+        <h1 className="text-danger">Thêm Sản phẩm</h1>
       </div>
       <div className="row card">
         <form className="needs-validation pro-form" onSubmit={handleSubmit(submitHandler)}>
@@ -162,7 +162,7 @@ const ProductForm = () => {
                 )}
               </div>
               <div className="col-sm-6 mt-5">
-                <label className="form-label">Thương hiệu</label>
+                <label className="form-label">Danh Mục</label>
                 <select className="form-control" {...register("brand", { required: true })}>
                   {brand &&
                     brand.map((item, index) => (
@@ -184,7 +184,7 @@ const ProductForm = () => {
                 </select>
               </div>
               <div className="col-12 mt-5">
-                <label className="form-label mb-3">Loại sản phẩm</label> <br />
+                <label className="form-label mb-3">Thương Hiệu</label> <br />
                 {category &&
                   category.map((item, index) => (
                     <div class="col-2 form-check form-check-inline mr-5" key={index}>
