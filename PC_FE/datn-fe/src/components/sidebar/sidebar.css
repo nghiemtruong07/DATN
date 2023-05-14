@@ -22,7 +22,9 @@
 .sidebar__item {
     padding: 0 0px;
 }
-
+.sidebar__item:hover{
+    cursor: pointer;
+}
 .sidebar__item-inner {
     padding: 15px 25px;
     display: flex;

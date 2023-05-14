@@ -7,7 +7,6 @@ public class ProductConst {
     public static final String API_PRODUCT_FILTER = "/api/site/product/filter";
     public static final String API_PRODUCT_RELATE = "/api/site/product/relate";
     public static final String API_PRODUCT_GET_ALL_BY_BRAND = "/api/site/product/by-brand";
-    public static final String API_PRODUCT_GET_ALL_BY_CATEGORY = "/api/site/product/by-category";
     public static final String API_PRODUCT_CREATE = "/api/admin/product/create";
     public static final String API_PRODUCT_MODIFY = "/api/admin/product/modify";
     public static final String API_PRODUCT_SEARCH = "/api/site/products/search";

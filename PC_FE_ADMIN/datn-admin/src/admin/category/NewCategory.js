@@ -21,7 +21,7 @@ const NewCategory = () => {
     console.log(result);
     createCategory(result)
       .then(() => {
-        toast.success("Thêm mới loại sản phẩm thành công.");
+        toast.success("Thêm mới thương hiệu thành công.");
         history.push("/categories");
       })
       .catch((error) => toast.error(error.response.data.Errors));
@@ -30,14 +30,14 @@ const NewCategory = () => {
   return (
     <div className="container-fluid card">
       <div className="col-10 offset-1 text-center">
-        <h2 className="text-danger">THÊM MỚI DANH MỤC</h2>
+        <h2 className="text-danger">THÊM MỚI THƯƠNG HIỆU</h2>
       </div>
       <div className="row">
         <div className="col-10 offset-1">
           <form className="needs-validation" onSubmit={handleSubmit(submitHandler)}>
             <div className="row g-3">
               <div className="col-sm-6">
-                <label className="form-label">Tên Danh Mục</label>
+                <label className="form-label">Tên Thương Hiệu</label>
                 <input
                   type="text"
                   className="form-control"

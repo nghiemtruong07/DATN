@@ -25,12 +25,12 @@ const EditBrand = () => {
     const result = {
       ...data,
       id: id,
-      createDate: null
+      createDate: null,
     };
     console.log(result);
     updateBrand(result)
       .then(() => {
-        toast.success("Cập nhật brand thành công.");
+        toast.success("Cập nhật thành công.");
         history.push("/brand");
       })
       .catch((error) => toast.error(error.response.data.Errors));
@@ -39,17 +39,14 @@ const EditBrand = () => {
   return (
     <div className="container-fluid card">
       <div className="col-10 offset-1 text-center">
-        <h2 className="text-danger">Thương hiệu</h2>
+        <h2 className="text-danger">Danh Mục</h2>
       </div>
       <div className="row">
         <div className="col-10 offset-1">
-          <form
-            className="needs-validation"
-            onSubmit={handleSubmit(submitHandler)}
-          >
+          <form className="needs-validation" onSubmit={handleSubmit(submitHandler)}>
             <div className="row g-3">
               <div className="col-sm-6">
-                <label className="form-label">Tên thương hiệu</label>
+                <label className="form-label">Tên Danh Mục</label>
                 <input
                   type="text"
                   className="form-control"
@@ -80,23 +77,16 @@ const EditBrand = () => {
                     Địa chỉ không hợp lệ!
                   </div>
                 )}
-              </div>         
+              </div>
               <div className="col-sm-6 mt-5">
                 <label className="form-label">Trạng thái hoạt động</label>
-                <select
-                  className="form-control"
-                  {...register("isActive", { required: false })}
-                >
+                <select className="form-control" {...register("isActive", { required: false })}>
                   <option value="false">Không hoạt động</option>
                   <option value="true">Hoạt động</option>
                 </select>
-              </div>           
+              </div>
             </div>
-            <button
-              className="btn btn-primary btn-lg mt-5 mb-5"
-              type="submit"
-              style={{ marginLeft: 500, borderRadius: 50 }}
-            >
+            <button className="btn btn-primary btn-lg mt-5 mb-5" type="submit" style={{ marginLeft: 500, borderRadius: 50 }}>
               Cập nhật
             </button>
           </form>
@@ -104,6 +94,6 @@ const EditBrand = () => {
       </div>
     </div>
   );
-}
+};
 
-export default EditBrand
+export default EditBrand;

@@ -30,7 +30,7 @@ const EditCategory = () => {
     console.log(result);
     updateCategory(result)
       .then(() => {
-        toast.success("Cập nhật loại sản phẩm thành công.");
+        toast.success("Cập nhật thương hiệu thành công.");
         history.push("/categories");
       })
       .catch((error) => toast.error(error.response.data.Errors));
@@ -39,14 +39,14 @@ const EditCategory = () => {
   return (
     <div className="container-fluid card">
       <div className="col-10 offset-1 text-center">
-        <h2 className="text-danger">Cập Nhật Danh Mục</h2>
+        <h2 className="text-danger">Cập Nhật Thương Hiệu</h2>
       </div>
       <div className="row">
         <div className="col-10 offset-1">
           <form className="needs-validation" onSubmit={handleSubmit(submitHandler)}>
             <div className="row g-3">
               <div className="col-sm-6">
-                <label className="form-label">Tên Danh Mục</label>
+                <label className="form-label">Tên Thương Hiệu</label>
                 <input
                   type="text"
                   className="form-control"

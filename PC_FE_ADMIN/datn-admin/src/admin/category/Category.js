@@ -34,7 +34,7 @@ const Category = () => {
     <div className="card">
       <div className="card__header mb-5">
         <NavLink to="/add-category" className="btn btn-primary" style={{ borderRadius: 50 }}>
-          Thêm Danh Mục
+          Thêm Thương Hiệu
         </NavLink>
       </div>
       <table className="table table-bordered">

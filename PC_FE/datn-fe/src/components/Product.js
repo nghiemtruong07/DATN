@@ -36,7 +36,7 @@ const brands = [
   },
   {
     display_name: "LAPTOP",
-    value: "7",
+    value: "LAPTOP",
     icon: "bx bx-category-alt",
   },
 ];
@@ -90,6 +90,7 @@ const Product = (props) => {
 
   const [category, setCategory] = useState([]);
   const [brand, setBrand] = useState([]);
+  const [brand1, setBrand1] = useState([]);
   const [price, setPrice] = useState([]);
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(10000000);
@@ -209,6 +210,7 @@ const Product = (props) => {
               </ul>
             </div>
           </div>
+
           <div className="col">
             <div className="container-fluid padding">
               <div className="container-fluid padding">
@@ -222,7 +224,7 @@ const Product = (props) => {
                     <div className="col-md-4 mb-3" key={index}>
                       <div className="card h-100">
                         <NavLink to={`/product-detail/${item.id}`}>
-                          <img src={require(`../static/images/${item.image}`)} style={{ width: 100, height: 100 }} alt="Product" />
+                          <img src={require(`../static/images/${item.image}`)} style={{ width: 100, height: 100 }} alt="" />
                         </NavLink>
                         <div className="card-body px-2 pb-2 pt-1">
                           <div className="d-flex justify-content-between">

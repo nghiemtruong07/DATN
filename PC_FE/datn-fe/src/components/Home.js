@@ -60,26 +60,26 @@ const Home = (props) => {
           <li data-target="#slides" data-slide-to={3} />
         </ul>
         <div className="carousel-inner mini-card">
-          <div className="carousel-item active">
-            <img src={second} alt="" />
+          <div className="carousel-item active" style={{ marginLeft: 250 }}>
+            <img src={second} alt="" style={{ width: 1000, height: 500 }} />
           </div>
-          <div className="carousel-item">
-            <img src={first} alt="" />
+          <div className="carousel-item" style={{ marginLeft: 250 }}>
+            <img src={first} alt="" style={{ width: 1000, height: 500 }} />
           </div>
-          <div className="carousel-item">
-            <img src={third} alt="" />
+          <div className="carousel-item" style={{ marginLeft: 250 }}>
+            <img src={third} alt="" style={{ width: 1000, height: 500 }} />
           </div>
-          <div className="carousel-item">
-            <img src={fourth} alt="" />
+          <div className="carousel-item" style={{ marginLeft: 250 }}>
+            <img src={fourth} alt="" style={{ width: 1000, height: 500 }} />
           </div>
         </div>
       </div>
-      <div className="col-11 container-fluid card">
+      <div className="col-15 container-fluid card">
         <h4 className="title text-primary"> Sản phẩm Máy tính - Máy chủ</h4>
         <div className="row padding d-flex">
           {products.map((item, index) => (
-            <div className="col-md-4 mb-3" key={index}>
-              <div className="card h-100 mini-pro">
+            <div className="col-md-3 mb-6" key={index}>
+              <div className="card h-90 mini-pro">
                 <div className="d-flex justify-content-between position-absolute w-100"></div>
                 <NavLink to={`/product-detail/${item.id}`}>
                   <img src={require(`../static/images/${item.image}`)} style={{ width: 175, height: 200 }} alt="Product" className="mini-card" />
