@@ -36,7 +36,7 @@ const brands = [
   },
   {
     display_name: "LAPTOP",
-    value: "LAPTOP",
+    value: "7",
     icon: "bx bx-category-alt",
   },
 ];
@@ -79,7 +79,7 @@ const prices = [
   },
 ];
 
-const count = 12;
+const count = 6;
 const defaultBrand = [1, 2, 3, 4, 5, 6, 7];
 const defaultCategory = [1, 2, 3, 4, 5, 6, 7];
 
