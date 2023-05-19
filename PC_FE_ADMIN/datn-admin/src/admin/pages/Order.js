@@ -149,15 +149,8 @@ const Order = () => {
   const [attribute, setAttribute] = useState([]);
 
   var rows = new Array(total).fill(0).map((zero, index) => (
-    <li
-      className={page === index + 1 ? "page-item active" : "page-item"}
-      key={index}
-    >
-      <button
-        className="page-link"
-        style={{ borderRadius: 50 }}
-        onClick={() => onChangePage(index + 1)}
-      >
+    <li className={page === index + 1 ? "page-item active" : "page-item"} key={index}>
+      <button className="page-link" style={{ borderRadius: 50 }} onClick={() => onChangePage(index + 1)}>
         {index + 1}
       </button>
     </li>
@@ -380,10 +373,7 @@ const Order = () => {
         </div>
         <div className="row">
           <div className="col-sm-4 mt-2">
-            <select
-              className="form-control"
-              onChange={(event) => getAllOrderByStatus(event.target.value)}
-            >
+            <select className="form-control" onChange={(event) => getAllOrderByStatus(event.target.value)}>
               <option value="0">Tất cả</option>
               {orderStatuses &&
                 orderStatuses.map((item, index) => (
@@ -394,30 +384,16 @@ const Order = () => {
             </select>
           </div>
           <div className="col-sm-4 mt-2">
-            <select
-              className="form-control"
-              onChange={(e) => changeYearHandler(e.target.value)}
-              value={year}
-            >
-              <option value="">
-                Chọn năm
-              </option>
+            <select className="form-control" onChange={(e) => changeYearHandler(e.target.value)} value={year}>
+              <option value="">Chọn năm</option>
               <option value="2019">2019</option>
               <option value="2021">2021</option>
               <option value="2022">2022</option>
             </select>
           </div>
           <div className="col-sm-4 mt-2">
-            <select
-              className="form-control"
-              onChange={(e) =>
-                getAllOrderByOrderStatusAndYearAndMonth(e.target.value)
-              }
-              value={month}
-            >
-              <option value="">
-                Chọn tháng
-              </option>
+            <select className="form-control" onChange={(e) => getAllOrderByOrderStatusAndYearAndMonth(e.target.value)} value={month}>
+              <option value="">Chọn tháng</option>
               {months &&
                 months.map((item, index) => (
                   <option key={index} value={item}>
@@ -429,30 +405,13 @@ const Order = () => {
         </div>
         <div className="row">
           <div className="col-sm-4 mt-2">
-            <input
-              type="date"
-              name=""
-              id=""
-              className="border"
-              onChange={(e) => setFrom(e.target.value)}
-              value={from}
-            />
+            <input type="date" name="" id="" className="border" onChange={(e) => setFrom(e.target.value)} value={from} />
           </div>
 
           <div className="col-sm-4 mt-2">
-            <input
-              type="date"
-              name=""
-              id=""
-              className="border"
-              onChange={(e) => setTo(e.target.value)}
-              value={to}
-            />
+            <input type="date" name="" id="" className="border" onChange={(e) => setTo(e.target.value)} value={to} />
           </div>
-          <button
-            className="btn btn-primary mt-2"
-            onClick={() => searchHandler()}
-          >
+          <button className="btn btn-primary mt-2" onClick={() => searchHandler()}>
             Tìm kiếm
           </button>
         </div>
@@ -469,34 +428,19 @@ const Order = () => {
                       <th scope="col">Thanh toán</th>
                       <th scope="col">Tổng tiền</th>
                       <th scope="col">
-                        <Badge
-                          type={orderStatus["Chờ xác nhận"]}
-                          content={"Chờ xác nhận"}
-                        />
+                        <Badge type={orderStatus["Chờ xác nhận"]} content={"Chờ xác nhận"} />
                       </th>
                       <th scope="col">
-                        <Badge
-                          type={orderStatus["Đang xử lí"]}
-                          content={"Đang xử lí"}
-                        />
+                        <Badge type={orderStatus["Đang xử lí"]} content={"Đang xử lí"} />
                       </th>
                       <th scope="col">
-                        <Badge
-                          type={orderStatus["Đang vận chuyển"]}
-                          content={"Đang vận chuyển"}
-                        />
+                        <Badge type={orderStatus["Đang vận chuyển"]} content={"Đang vận chuyển"} />
                       </th>
                       <th scope="col">
-                        <Badge
-                          type={orderStatus["Đã giao"]}
-                          content={"Đã giao"}
-                        />
+                        <Badge type={orderStatus["Đã giao"]} content={"Đã giao"} />
                       </th>
                       <th scope="col">
-                        <Badge
-                          type={orderStatus["Đã hủy"]}
-                          content={"Đã hủy"}
-                        />
+                        <Badge type={orderStatus["Đã hủy"]} content={"Đã hủy"} />
                       </th>
                       <th scope="col">#</th>
                     </tr>
@@ -512,25 +456,12 @@ const Order = () => {
                           </th>
                           <th>{item.createDate}</th>
                           <th>
-                            <Badge
-                              type={pendingStatus[item.isPending]}
-                              content={
-                                item.isPending
-                                  ? "Đã thanh toán"
-                                  : "Chưa thanh toán"
-                              }
-                            />
+                            <Badge type={pendingStatus[item.isPending]} content={item.isPending ? "Đã thanh toán" : "Chưa thanh toán"} />
                           </th>
                           <th> {item.total.toLocaleString()} ₫</th>
                           <th>
                             <div className="form-check mb-4">
-                              <input
-                                className="form-check-input"
-                                type="radio"
-                                name={index}
-                                checked={item.orderStatus.id === 1}
-                                value="1"
-                              />
+                              <input className="form-check-input" type="radio" name={index} checked={item.orderStatus.id === 1} value="1" />
                             </div>
                           </th>
                           <th>
@@ -541,12 +472,7 @@ const Order = () => {
                                 name={index}
                                 checked={item.orderStatus.id === 2}
                                 value="2"
-                                onChange={(e) =>
-                                  updateStatusHandlerFirst(
-                                    item.id,
-                                    e.target.value
-                                  )
-                                }
+                                onChange={(e) => updateStatusHandlerFirst(item.id, e.target.value)}
                               />
                             </div>
                           </th>
@@ -558,12 +484,7 @@ const Order = () => {
                                 name={index}
                                 checked={item.orderStatus.id === 3}
                                 value="3"
-                                onChange={(e) =>
-                                  updateStatusHandlerSecond(
-                                    item.id,
-                                    e.target.value
-                                  )
-                                }
+                                onChange={(e) => updateStatusHandlerSecond(item.id, e.target.value)}
                               />
                             </div>
                           </th>
@@ -575,12 +496,7 @@ const Order = () => {
                                 name={index}
                                 checked={item.orderStatus.id === 4}
                                 value="4"
-                                onChange={(e) =>
-                                  updateStatusHandlerThird(
-                                    item.id,
-                                    e.target.value
-                                  )
-                                }
+                                onChange={(e) => updateStatusHandlerThird(item.id, e.target.value)}
                               />
                             </div>
                           </th>
@@ -592,24 +508,14 @@ const Order = () => {
                                 name={index}
                                 checked={item.orderStatus.id === 5}
                                 value="5"
-                                onChange={(e) =>
-                                  updateStatusHandlerFouth(
-                                    item.id,
-                                    e.target.value
-                                  )
-                                }
+                                onChange={(e) => updateStatusHandlerFouth(item.id, e.target.value)}
                               />
                             </div>
                           </th>
                           <th>
-                            {item.orderStatus.id !== 4 &&
-                            item.orderStatus.id !== 3 &&
-                            item.orderStatus.id !== 5 ? (
+                            {item.orderStatus.id !== 4 && item.orderStatus.id !== 3 && item.orderStatus.id !== 5 ? (
                               <NavLink to={`/order-detail/${item.id}`} exact>
-                                <i
-                                  className="fa fa-pencil-square-o"
-                                  aria-hidden="true"
-                                ></i>
+                                <i className="fa fa-pencil-square-o" aria-hidden="true"></i>
                               </NavLink>
                             ) : (
                               ""
@@ -626,21 +532,13 @@ const Order = () => {
         <nav aria-label="Page navigation">
           <ul className="pagination offset-5 mt-3">
             <li className={page === 1 ? "page-item disabled" : "page-item"}>
-              <button
-                className="page-link"
-                style={{ borderRadius: 50 }}
-                onClick={() => onChangePage(1)}
-              >
+              <button className="page-link" style={{ borderRadius: 50 }} onClick={() => onChangePage(1)}>
                 {`<<`}
               </button>
             </li>
             {rows}
             <li className={page === total ? "page-item disabled" : "page-item"}>
-              <button
-                className="page-link"
-                style={{ borderRadius: 50 }}
-                onClick={() => onChangePage(total)}
-              >
+              <button className="page-link" style={{ borderRadius: 50 }} onClick={() => onChangePage(total)}>
                 {`>>`}
               </button>
             </li>
@@ -649,49 +547,29 @@ const Order = () => {
       </div>
       <Modal show={showFirst} onHide={handleCloseFirst}>
         <Modal.Header closeButton>
-          <Modal.Title style={{ textAlign: "center" }}>
-            Xác nhận cập nhật?
-          </Modal.Title>
+          <Modal.Title style={{ textAlign: "center" }}>Xác nhận cập nhật?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Alert variant="success">
-            <Alert.Heading>
-              Gọi điện cho khách hàng xác nhận những thông tin
-            </Alert.Heading>
+            <Alert.Heading>Gọi điện cho khách hàng xác nhận những thông tin</Alert.Heading>
             <hr />
-            <p className="font-weight-bold">
-              Tên khách hàng: {temp && temp.fullname}
-            </p>
-            <p className="font-weight-bold">
-              Số điện thoại: {temp && temp.phone}
-            </p>
-            <p className="font-weight-bold">
-              Địa chỉ nhận hàng: {temp && temp.address}
-            </p>
+            <p className="font-weight-bold">Tên khách hàng: {temp && temp.fullname}</p>
+            <p className="font-weight-bold">Số điện thoại: {temp && temp.phone}</p>
+            <p className="font-weight-bold">Địa chỉ nhận hàng: {temp && temp.address}</p>
             <p className="font-weight-bold">Sản phẩm mua:</p>
             {attribute &&
               attribute.map((item, index) => (
                 <p key={index}>
-                  {item.attribute.name} - Size {item.attribute.size} - Số lượng{" "}
-                  {item.quantity}
+                  {item.attribute.name} - Số lượng {item.quantity}
                 </p>
               ))}
           </Alert>
           <Form.Group className="mb-3" controlId="formBasicCheckbox">
-            <Form.Check
-              type="checkbox"
-              label="Đã xác nhận đơn hàng."
-              defaultChecked={flagProcess}
-              onChange={(e) => flagProcessHandler(e)}
-            />
+            <Form.Check type="checkbox" label="Đã xác nhận đơn hàng." defaultChecked={flagProcess} onChange={(e) => flagProcessHandler(e)} />
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>
-          <Button
-            variant="danger"
-            disabled={!flagProcess}
-            onClick={confirmUpdateProcess}
-          >
+          <Button variant="danger" disabled={!flagProcess} onClick={confirmUpdateProcess}>
             Xác nhận
           </Button>
           <Button variant="primary" onClick={handleCloseFirst}>
@@ -702,21 +580,14 @@ const Order = () => {
 
       <Modal show={showSecond} onHide={handleCloseSecond}>
         <Modal.Header closeButton>
-          <Modal.Title style={{ textAlign: "center" }}>
-            Xác nhận cập nhật?
-          </Modal.Title>
+          <Modal.Title style={{ textAlign: "center" }}>Xác nhận cập nhật?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Alert variant="success">
             <Alert.Heading>Cập nhật thông tin vận đơn</Alert.Heading>
             <hr />
-            <Form.Label style={{ marginRight: 30, marginBottom: 10 }}>
-              Hãng vận chuyển
-            </Form.Label>
-            <Form.Select
-              style={{ height: 40, width: 300, marginBottom: 20 }}
-              onChange={(e) => shipmentHandler(e.target.value)}
-            >
+            <Form.Label style={{ marginRight: 30, marginBottom: 10 }}>Hãng vận chuyển</Form.Label>
+            <Form.Select style={{ height: 40, width: 300, marginBottom: 20 }} onChange={(e) => shipmentHandler(e.target.value)}>
               <option value={null}></option>
               <option value="ViettelPost">ViettelPost</option>
               <option value="J&T">J&T</option>
@@ -724,33 +595,17 @@ const Order = () => {
               <option value="AhaMove">AhaMove</option>
             </Form.Select>
             <Form>
-              <Form.Label style={{ marginRight: 30, marginBottom: 10 }}>
-                Mã vận đơn
-              </Form.Label>
-              <Form.Control
-                style={{ height: 40, width: 300, marginBottom: 20 }}
-                type="text"
-                onChange={(e) => codeHandler(e.target.value)}
-              />
+              <Form.Label style={{ marginRight: 30, marginBottom: 10 }}>Mã vận đơn</Form.Label>
+              <Form.Control style={{ height: 40, width: 300, marginBottom: 20 }} type="text" onChange={(e) => codeHandler(e.target.value)} />
             </Form>
             <Form>
-              <Form.Label style={{ marginRight: 30, marginBottom: 10 }}>
-                Ngày nhận dự kiến
-              </Form.Label>
-              <Form.Control
-                style={{ height: 40, width: 300 }}
-                type="date"
-                onChange={(e) => shipDateHandler(e.target.value)}
-              />
+              <Form.Label style={{ marginRight: 30, marginBottom: 10 }}>Ngày nhận dự kiến</Form.Label>
+              <Form.Control style={{ height: 40, width: 300 }} type="date" onChange={(e) => shipDateHandler(e.target.value)} />
             </Form>
           </Alert>
         </Modal.Body>
         <Modal.Footer>
-          <Button
-            variant="danger"
-            onClick={confirmUpdateShip}
-            disabled={!shipment || !code || !shipDate}
-          >
+          <Button variant="danger" onClick={confirmUpdateShip} disabled={!shipment || !code || !shipDate}>
             Xác nhận
           </Button>
           <Button variant="primary" onClick={handleCloseSecond}>
@@ -761,33 +616,20 @@ const Order = () => {
 
       <Modal show={showThird} onHide={handleCloseThird}>
         <Modal.Header closeButton>
-          <Modal.Title style={{ textAlign: "center" }}>
-            Xác nhận cập nhật?
-          </Modal.Title>
+          <Modal.Title style={{ textAlign: "center" }}>Xác nhận cập nhật?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Alert variant="success">
             <Alert.Heading>Tiền đã về tay?</Alert.Heading>
             <hr />
-            <p className="font-weight-bold">
-              Tổng tiền đơn hàng: {temp && temp.total.toLocaleString()} đ
-            </p>
+            <p className="font-weight-bold">Tổng tiền đơn hàng: {temp && temp.total.toLocaleString()} đ</p>
           </Alert>
           <Form.Group className="mb-3" controlId="formBasicCheckbox">
-            <Form.Check
-              type="checkbox"
-              label="Xác nhận đã nhận tiền."
-              defaultChecked={flagProcess}
-              onChange={(e) => flagSuccessHandler(e)}
-            />
+            <Form.Check type="checkbox" label="Xác nhận đã nhận tiền." defaultChecked={flagProcess} onChange={(e) => flagSuccessHandler(e)} />
           </Form.Group>
         </Modal.Body>
         <Modal.Footer>
-          <Button
-            variant="danger"
-            disabled={!flagSuccess}
-            onClick={confirmUpdateSuccess}
-          >
+          <Button variant="danger" disabled={!flagSuccess} onClick={confirmUpdateSuccess}>
             Xác nhận
           </Button>
           <Button variant="primary" onClick={handleCloseThird}>
@@ -798,21 +640,14 @@ const Order = () => {
 
       <Modal show={showFouth} onHide={handleCloseFouth}>
         <Modal.Header closeButton>
-          <Modal.Title style={{ textAlign: "center" }}>
-            Xác nhận cập nhật?
-          </Modal.Title>
+          <Modal.Title style={{ textAlign: "center" }}>Xác nhận cập nhật?</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Alert variant="danger">
             <Alert.Heading>Hủy đơn hàng</Alert.Heading>
             <hr />
-            <Form.Label style={{ marginRight: 30, marginBottom: 10 }}>
-              Lí do hủy đơn
-            </Form.Label>
-            <Form.Select
-              style={{ height: 40, width: 420, marginBottom: 20 }}
-              onChange={(e) => reasonHandler(e.target.value)}
-            >
+            <Form.Label style={{ marginRight: 30, marginBottom: 10 }}>Lí do hủy đơn</Form.Label>
+            <Form.Select style={{ height: 40, width: 420, marginBottom: 20 }} onChange={(e) => reasonHandler(e.target.value)}>
               <option value={null}></option>
               <option value="Đặt trùng">Đặt trùng</option>
               <option value="Thêm bớt sản phẩm">Thêm bớt sản phẩm</option>
@@ -820,23 +655,13 @@ const Order = () => {
               <option value="AhaMove">Lí do khác</option>
             </Form.Select>
             <Form>
-              <Form.Label style={{ marginRight: 30, marginBottom: 10 }}>
-                Mô tả
-              </Form.Label>
-              <Form.Control
-                as="textarea"
-                rows={3}
-                onChange={(e) => descriptionHandler(e.target.value)}
-              />
+              <Form.Label style={{ marginRight: 30, marginBottom: 10 }}>Mô tả</Form.Label>
+              <Form.Control as="textarea" rows={3} onChange={(e) => descriptionHandler(e.target.value)} />
             </Form>
           </Alert>
         </Modal.Body>
         <Modal.Footer>
-          <Button
-            variant="danger"
-            onClick={confirmUpdateCancel}
-            disabled={!reason || !description}
-          >
+          <Button variant="danger" onClick={confirmUpdateCancel} disabled={!reason || !description}>
             Xác nhận
           </Button>
           <Button variant="primary" onClick={handleCloseFouth}>

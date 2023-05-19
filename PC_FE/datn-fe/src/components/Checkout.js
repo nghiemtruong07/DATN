@@ -210,9 +210,7 @@ const Checkout = (props) => {
               cart.map((item, index) => (
                 <li className="list-group-item d-flex justify-content-between lh-sm" key={index}>
                   <div>
-                    <h6 className="my-0">
-                      {item.name} - {item.size}
-                    </h6>
+                    <h6 className="my-0">{item.name}</h6>
                     <small className="text-muted">
                       {((item.price * (100 - item.discount)) / 100).toLocaleString()} x {item.quantity}
                     </small>
